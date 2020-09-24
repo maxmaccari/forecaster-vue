@@ -1,0 +1,7 @@
+.link {
+  @apply underline opacity-75;
+
+  &:hover {
+    @apply opacity-100;
+  }
+}

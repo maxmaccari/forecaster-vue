@@ -1,0 +1,7 @@
+.btn {
+  @apply px-2 ml-2 text-lg font-bold text-blue-900 bg-gray-500;
+
+  &:disabled {
+    @apply text-gray-700 bg-gray-500 cursor-default;
+  }
+}

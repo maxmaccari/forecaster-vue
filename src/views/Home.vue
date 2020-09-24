@@ -8,7 +8,7 @@
       <div class="flex w-full mt-4 sm:mt-5">
         <input
           type="text"
-          class="flex-1 p-2 text-lg placeholder-gray-600 bg-white border border-gray-500 opacity-100"
+          class="flex-1 input"
           placeholder="Where are you now?"
         />
         <button class="btn" disabled>
@@ -34,21 +34,3 @@ export default defineComponent({
   components: {},
 })
 </script>
-
-<style scoped>
-.btn {
-  @apply text-lg font-bold text-blue-900 bg-gray-500 px-2 ml-2;
-
-  &:disabled {
-    @apply text-gray-700 bg-gray-500 cursor-default;
-  }
-}
-
-.link {
-  @apply underline opacity-75;
-
-  &:hover {
-    @apply opacity-100;
-  }
-}
-</style>
