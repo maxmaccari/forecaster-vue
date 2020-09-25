@@ -11,16 +11,21 @@
           class="flex-1 input"
           placeholder="Where are you now?"
         />
-        <button class="btn" disabled>
+        <button class="ml-2 btn" disabled>
           Go
         </button>
       </div>
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
       <p class="mt-3 font-thin text-blue-900 sm:mt-4">
-        Designed and developed by <a href="#" class="link">Maxsuel Maccari</a>.
-        You can check all credits of used assets
-        <a href="#" class="link">here</a>.
+        Designed and developed by
+        <a
+          href="https://www.linkedin.com/in/maxmaccari/"
+          class="link"
+          target="_blank"
+          >Maxsuel Maccari</a
+        >. You can check all credits of used assets
+        <router-link :to="{ name: 'Credits' }" class="link">here</router-link>.
       </p>
     </div>
   </div>

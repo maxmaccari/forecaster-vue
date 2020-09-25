@@ -1,0 +1,80 @@
+<template>
+  <div class="flex items-center justify-center h-full home">
+    <div class="px-2 py-3 sm:p-6 w-450 bg-gray-translucid">
+      <h2 class="text-xl font-bold text-center text-blue-900">Credits</h2>
+
+      <hr class="w-full mt-1 border-gray-500" />
+
+      <!-- eslint-disable -->
+      <p class="mt-4 text-blue-900">
+        Icons taken from
+        <a href="https://www.flaticon.com/" target="blank" class="link">www.flaticon.com</a>
+        made by:
+        <a
+          href="https://www.flaticon.com/free-icon/wind_615486?term=wind&page=1&position=50"
+          target="blank"
+          class="link"
+        >Freeplk</a>,
+        <a
+          href="https://www.flaticon.com/free-icon/humidity_1163648?term=humidity&page=1&position=43"
+          target="blank"
+          class="link"
+        >Iconixar</a>,
+        <a
+          href="https://www.flaticon.com/free-icon/meter_1085657?term=pressure&page=1&position=13"
+          target="blank"
+          class="link"
+        >Goodware</a> and
+        <a
+          href="https://www.flaticon.com/packs/weather-forecast"
+          target="blank"
+          class="link"
+        >Linector</a>.
+      </p>
+
+      <p class="mt-3 text-blue-900">
+        Photos taken from
+        <a href="https://unsplash.com/" target="_blank" class="link">unsplash.com</a> by:
+        <a
+          href="https://unsplash.com/photos/W5MhJ6cy1So"
+          target="blank"
+          class="link"
+        >@davidmarcu</a>,
+        <a
+          href="https://unsplash.com/photos/Lagi4DWvXpc"
+          target="blank"
+          class="link"
+        >@niklas_wersinger</a>,
+        <a
+          href="https://unsplash.com/photos/trvELSvNZoY"
+          target="blank"
+          class="link"
+        >@ivans_in_danger</a>,
+        <a
+          href="https://unsplash.com/photos/QdwR5aRGkbs"
+          target="blank"
+          class="link"
+        >@jfelise</a>,
+        <a
+          href="https://unsplash.com/photos/VWxiaKn-lVc"
+          target="blank"
+          class="link"
+        >@tadej</a> and
+        <a
+          href="https://unsplash.com/photos/TvCRYXwKhfQ"
+          target="blank"
+          class="link"
+        >@renancaraujo</a>.
+      </p>
+      <!-- eslint-enable -->
+
+      <hr class="w-full mt-4 border-gray-500" />
+
+      <router-link
+        :to="{ name: 'Home' }"
+        class="block w-full mt-4 text-center btn"
+        >Back</router-link
+      >
+    </div>
+  </div>
+</template>
