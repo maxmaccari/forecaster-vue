@@ -2,6 +2,6 @@
   @apply p-2 text-sm text-lg font-bold text-center text-blue-900 bg-gray-500;
 
   &:disabled, .disabled {
-    @apply text-gray-700 bg-gray-500 cursor-default pointer-events-none;
+    @apply text-gray-600 bg-gray-400 cursor-default pointer-events-none;
   }
 }

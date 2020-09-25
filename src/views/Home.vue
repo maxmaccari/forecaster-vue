@@ -10,8 +10,9 @@
           type="text"
           class="flex-1 input"
           placeholder="Where are you now?"
+          v-model="city"
         />
-        <button class="ml-2 btn" disabled>
+        <button class="ml-2 btn" :disabled="isGoDisabled">
           Go
         </button>
       </div>
@@ -34,8 +35,26 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-export default defineComponent({
+const Component = defineComponent({
   name: 'Home',
   components: {},
+  // setup() {
+  //   const city = ref('')
+  //   const isGoDisabled = computed(() => !city.value)
+
+  //   return { city, isGoDisabled }
+  // },
+  data() {
+    return {
+      city: '',
+    }
+  },
+  computed: {
+    isGoDisabled(): boolean {
+      return !this.city
+    },
+  },
 })
+
+export default Component
 </script>
