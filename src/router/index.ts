@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Credits',
     component: import('@/views/Credits.vue'),
   },
+  {
+    path: '/forecast/:location',
+    name: 'Forecast',
+    component: import('@/views/Forecast.vue'),
+  },
 ]
 
 const router = createRouter({

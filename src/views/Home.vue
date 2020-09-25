@@ -5,17 +5,17 @@
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
 
-      <div class="flex w-full mt-4 sm:mt-5">
+      <form @submit="goToForecast" class="flex w-full mt-4 sm:mt-5">
         <input
           type="text"
           class="flex-1 input"
           placeholder="Where are you now?"
-          v-model="city"
+          v-model="location"
         />
-        <button class="ml-2 btn" :disabled="isGoDisabled">
+        <button type="submit" class="ml-2 btn" :disabled="isGoDisabled">
           Go
         </button>
-      </div>
+      </form>
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
       <p class="mt-3 font-thin text-blue-900 sm:mt-4">
@@ -38,20 +38,22 @@ import { defineComponent } from 'vue'
 const Component = defineComponent({
   name: 'Home',
   components: {},
-  // setup() {
-  //   const city = ref('')
-  //   const isGoDisabled = computed(() => !city.value)
-
-  //   return { city, isGoDisabled }
-  // },
   data() {
     return {
-      city: '',
+      location: '',
     }
   },
   computed: {
     isGoDisabled(): boolean {
-      return !this.city
+      return !this.location
+    },
+  },
+  methods: {
+    goToForecast() {
+      this.$router.push({
+        name: 'Forecast',
+        params: { location: this.location },
+      })
     },
   },
 })
