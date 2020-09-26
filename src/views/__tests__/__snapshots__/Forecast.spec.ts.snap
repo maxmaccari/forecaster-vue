@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Forecast renders the view properly 1`] = `
-<div>
+<div class="flex items-center justify-center min-h-screen">
   <anonymous-stub></anonymous-stub>
 </div>
 `;

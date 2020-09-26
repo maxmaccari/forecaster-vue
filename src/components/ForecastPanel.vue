@@ -6,9 +6,15 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  props: {
+    location: {
+      type: String,
+      required: true,
+    },
+  },
   async setup() {
-    await new Promise((resolve, reject) => {
-      setTimeout(() => reject({ message: 'my error' }), 1000)
+    await new Promise(resolve => {
+      setTimeout(() => resolve({}), 1000)
     })
 
     return {}

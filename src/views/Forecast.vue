@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex items-center justify-center min-h-screen">
     <ErrorPanel :error="error" v-if="error" />
     <Suspense v-else>
       <template #default>
