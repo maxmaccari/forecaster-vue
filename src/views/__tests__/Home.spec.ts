@@ -44,16 +44,16 @@ describe('Home', () => {
   })
 
   it('pushes to Forecast route if go button is pressed with inputted location', async () => {
-    const location = 'New York'
     const wrapper = createWrapper()
 
 
     const locationInput = wrapper.find('[data-test-id="locationInput"')
-    await locationInput.setValue(location)
+    await locationInput.setValue('  New York ')
 
     const locationForm = wrapper.find('[data-test-id="locationForm"]')
     await locationForm.trigger('submit')
 
-    expect(router.push).toBeCalledWith({ name: 'Forecast', params: { location } })
+    expect(router.push)
+      .toBeCalledWith({ name: 'Forecast', params: { location: 'new york' } })
   })
 })

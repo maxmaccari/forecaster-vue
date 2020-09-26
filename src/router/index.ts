@@ -10,12 +10,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/credits',
     name: 'Credits',
-    component: import('@/views/Credits.vue'),
+    component: () => import('@/views/Credits.vue'),
   },
   {
     path: '/forecast/:location',
     name: 'Forecast',
-    component: import('@/views/Forecast.vue'),
+    component: () => import('@/views/Forecast.vue'),
   },
 ]
 

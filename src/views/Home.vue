@@ -6,7 +6,7 @@
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
 
       <form
-        @submit="goToForecast"
+        @submit.prevent="goToForecast"
         class="flex w-full mt-4 sm:mt-5"
         data-test-id="locationForm"
       >
@@ -15,7 +15,7 @@
           class="flex-1 input"
           placeholder="Where are you now?"
           data-test-id="locationInput"
-          v-model="location"
+          v-model.trim="location"
         />
         <button
           type="submit"
@@ -62,7 +62,7 @@ const Component = defineComponent({
     goToForecast() {
       this.$router.push({
         name: 'Forecast',
-        params: { location: this.location },
+        params: { location: this.location.toLowerCase() },
       })
     },
   },
