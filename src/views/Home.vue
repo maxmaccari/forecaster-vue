@@ -5,14 +5,24 @@
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
 
-      <form @submit="goToForecast" class="flex w-full mt-4 sm:mt-5">
+      <form
+        @submit="goToForecast"
+        class="flex w-full mt-4 sm:mt-5"
+        data-test-id="locationForm"
+      >
         <input
           type="text"
           class="flex-1 input"
           placeholder="Where are you now?"
+          data-test-id="locationInput"
           v-model="location"
         />
-        <button type="submit" class="ml-2 btn" :disabled="isGoDisabled">
+        <button
+          type="submit"
+          class="ml-2 btn"
+          :disabled="isGoDisabled"
+          data-test-id="goButton"
+        >
           Go
         </button>
       </form>
