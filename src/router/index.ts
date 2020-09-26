@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/forecast/:location',
     name: 'Forecast',
-    component: () => import('@/views/Forecast.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Forecast.vue'),
   },
 ]
 

@@ -1,9 +1,9 @@
 module.exports = {
   future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: ['src/**/*.css', 'src/**/*.vue'],
   target: 'relaxed',
   prefix: '',
   important: false,
