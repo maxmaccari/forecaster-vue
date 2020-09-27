@@ -1,40 +1,33 @@
 <template>
   <div class="flex items-center justify-center min-h-screen">
-    <ErrorPanel :error="error" v-if="error" />
-    <Suspense v-else>
-      <template #default>
-        <ForecastPanel :location="location" />
-      </template>
-      <template #fallback>
-        <LoadingPanel />
-      </template>
-    </Suspense>
+    <AsyncBoundary>
+      <AsyncProvider :provider="provider" v-slot="{ data }">
+        <ForecastPanel :forecast="data" />
+      </AsyncProvider>
+    </AsyncBoundary>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ForecastPanel from '@/components/ForecastPanel.vue'
-import ErrorPanel from '@/components/ErrorPanel.vue'
-import LoadingPanel from '@/components/LoadingPanel.vue'
+import AsyncBoundary from '@/components/AsyncBoundary.vue'
+import AsyncProvider from '@/components/AsyncProvider.vue'
 
 export default defineComponent({
-  components: { ForecastPanel, ErrorPanel, LoadingPanel },
+  components: { ForecastPanel, AsyncBoundary, AsyncProvider },
   props: {
     location: {
       type: String,
       required: true,
     },
   },
-  data(): { error: any } {
-    return {
-      error: null,
-    }
-  },
-  errorCaptured(error) {
-    this.error = error
-
-    return true
+  methods: {
+    async provider() {
+      return new Promise(resolve => {
+        setTimeout(() => resolve({ message: 'hello world' }), 1000)
+      })
+    },
   },
 })
 </script>
