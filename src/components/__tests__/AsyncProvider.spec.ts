@@ -5,7 +5,8 @@ import flushPromises from 'flush-promises'
 
 describe('AsyncProvider', () => {
   it('renders the component in the slot passing the returned data from the provider', async () => {
-    const Component = defineComponent({
+    const ExampleComponent = defineComponent({
+      name: 'ExampleComponent',
       props: ['data'],
       render() {
         return h('div', this.data)
@@ -13,16 +14,20 @@ describe('AsyncProvider', () => {
     })
     const data = { content: 'abcdefgh' }
     const provider = async () => await Promise.resolve(data)
-    const WrapperComponent = () => {
-      const providerWrapper = h(AsyncProvider, { provider }, {
-        default: (props: any) => h(Component, { data: props.data })
-      })
-      return h(Suspense, providerWrapper)
-    }
+    const WrapperComponent = defineComponent({
+      render() {
+        return h(Suspense,
+          h(AsyncProvider, { provider }, {
+            default: (props: any) => h(ExampleComponent, { data: props.data })
+          })  
+        )
+      }
+    })
     const wrapper = mount(WrapperComponent)
 
     await flushPromises()
-    
-    expect(wrapper.html()).toContain(data.content)
+    const exampleComponent = wrapper.findComponent(ExampleComponent)
+
+    expect(exampleComponent.exists()).toBe(true)
   })
 })

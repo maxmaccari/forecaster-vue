@@ -24,9 +24,7 @@ export default defineComponent({
   },
   methods: {
     async provider() {
-      return new Promise(resolve => {
-        setTimeout(() => resolve({ message: 'hello world' }), 1000)
-      })
+      return {}
     },
   },
 })

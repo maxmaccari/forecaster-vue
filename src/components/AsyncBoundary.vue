@@ -16,6 +16,7 @@ import ErrorPanel from './ErrorPanel'
 import LoadingPanel from './LoadingPanel'
 
 export default {
+  name: 'AsyncBoundary',
   components: { LoadingPanel, ErrorPanel },
   setup() {
     const error = ref(null)
