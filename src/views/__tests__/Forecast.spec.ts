@@ -5,6 +5,7 @@ import flushPromises from 'flush-promises'
 import { useForecast } from '@/use/forecast'
 
 jest.mock('@/use/forecast')
+const mockedUseForecast = useForecast as jest.MockedFunction<typeof useForecast>
 
 describe('Forecast', () => {
   it('renders the view properly', () => {
@@ -16,10 +17,13 @@ describe('Forecast', () => {
 
   it('renders ForecastPanel passing the location and the loaded forecast data as props', async () => {
     const data = {}
-    useForecast.mockResolvedValue(data)
+    mockedUseForecast.mockResolvedValue(data)
     const location = 'barcelona'
     const wrapper = mount(Forecast, {
       props: { location },
+      global: {
+        stubs: ['forecast-panel'],
+      },
     })
 
     await flushPromises()

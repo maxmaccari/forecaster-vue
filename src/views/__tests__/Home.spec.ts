@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Home from '../Home.vue'
 
 const router = {
-  push: jest.fn()
+  push: jest.fn(),
 }
 
 const createWrapper = (options = {}) => {
@@ -10,11 +10,11 @@ const createWrapper = (options = {}) => {
     global: {
       mocks: { $router: router },
       components: {
-        RouterLink: {}
+        RouterLink: {},
       },
     },
-    ...options
-  }) 
+    ...options,
+  })
 }
 
 describe('Home', () => {
@@ -32,9 +32,7 @@ describe('Home', () => {
   })
 
   it('enables go button if location is filled', async () => {
-
     const wrapper = createWrapper()
-
 
     const locationInput = wrapper.find('[data-test-id="locationInput"')
     await locationInput.setValue('New York')
@@ -46,14 +44,15 @@ describe('Home', () => {
   it('pushes to Forecast route if go button is pressed with inputted location', async () => {
     const wrapper = createWrapper()
 
-
     const locationInput = wrapper.find('[data-test-id="locationInput"')
     await locationInput.setValue('  New York ')
 
     const locationForm = wrapper.find('[data-test-id="locationForm"]')
     await locationForm.trigger('submit')
 
-    expect(router.push)
-      .toBeCalledWith({ name: 'Forecast', params: { location: 'new york' } })
+    expect(router.push).toBeCalledWith({
+      name: 'Forecast',
+      params: { location: 'new york' },
+    })
   })
 })

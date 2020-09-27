@@ -16,12 +16,18 @@ describe('AsyncProvider', () => {
     const provider = async () => await Promise.resolve(data)
     const WrapperComponent = defineComponent({
       render() {
-        return h(Suspense,
-          h(AsyncProvider, { provider }, {
-            default: (props: any) => h(ExampleComponent, { data: props.data })
-          })  
+        return h(
+          Suspense,
+          h(
+            AsyncProvider,
+            { provider },
+            {
+              default: (props: any) =>
+                h(ExampleComponent, { data: props.data }),
+            }
+          )
         )
-      }
+      },
     })
     const wrapper = mount(WrapperComponent)
 

@@ -6,10 +6,10 @@ describe('Credits', () => {
     const wrapper = shallowMount(Credits, {
       global: {
         components: {
-          RouterLink: {}
-        }
+          RouterLink: {},
+        },
       },
-    }) 
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })
