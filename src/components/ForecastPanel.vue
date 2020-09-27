@@ -12,6 +12,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    location: {
+      type: String,
+      required: true,
+    },
   },
 })
 </script>

@@ -2,7 +2,9 @@ import { shallowMount, mount } from '@vue/test-utils'
 import Forecast from '../Forecast.vue'
 import ForecastPanel from '@/components/ForecastPanel.vue'
 import flushPromises from 'flush-promises'
+import { useForecast } from '@/use/forecast'
 
+jest.mock('@/use/forecast')
 
 describe('Forecast', () => {
   it('renders the view properly', () => {
@@ -13,14 +15,20 @@ describe('Forecast', () => {
   })
 
   it('renders ForecastPanel passing the location and the loaded forecast data as props', async () => {
+    const data = {}
+    useForecast.mockResolvedValue(data)
     const location = 'barcelona'
-    const wrapper = mount(Forecast, { 
-      props: { location }
+    const wrapper = mount(Forecast, {
+      props: { location },
     })
 
     await flushPromises()
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.findComponent(ForecastPanel).exists()).toBe(true)
+    const forecastPanelWrapper = wrapper.findComponent(ForecastPanel)
+
+    expect(forecastPanelWrapper.exists()).toBe(true)
+    expect(forecastPanelWrapper.props('location')).toBe(location)
+    expect(forecastPanelWrapper.props('forecast')).toEqual(data)
   })
 })
