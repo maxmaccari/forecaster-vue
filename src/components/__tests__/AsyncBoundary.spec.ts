@@ -73,4 +73,23 @@ describe('AsyncBoundary', () => {
 
     expect(errorWrapper.props('error')).toEqual(error)
   })
+
+  it('re-renders the suspense in case of receive the try-again event from the ErrorPanel', async () => {
+    const error = { message: 'error message' }
+    const AsyncComponent = {
+      async setup() {
+        await Promise.reject(error)
+      },
+    }
+    const wrapper = createWrapper({ slots: { default: h(AsyncComponent) } })
+
+    await flushPromises()
+
+    const errorWrapper = wrapper.findComponent(ErrorPanel)
+    errorWrapper.vm.$emit('try-again')
+
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.findComponent(LoadingPanel).exists()).toBe(true)
+  })
 })

@@ -1,5 +1,5 @@
 <template>
-  <ErrorPanel :error="error" v-if="error" />
+  <ErrorPanel :error="error" v-if="error" @try-again="tryAgain" />
   <Suspense v-else>
     <template #default>
       <slot />
@@ -21,13 +21,17 @@ export default {
   setup() {
     const error = ref(null)
 
+    const tryAgain = () => {
+      error.value = null
+    }
+
     onErrorCaptured(err => {
       error.value = err
 
       return true
     })
 
-    return { error }
+    return { error, tryAgain }
   },
 }
 </script>
