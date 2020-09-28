@@ -1,3 +1,8 @@
+declare interface ErrorResponse {
+  cod: string
+  message: string
+}
+
 declare interface WindResponse {
   speed: number
   deg: number
@@ -161,10 +166,27 @@ let cache: CacheHash = new CacheHash()
 const API_URL = process.env.VUE_APP_API_URL
 const API_KEY = process.env.VUE_APP_API_KEY
 
+const parseError = (response: Response): ErrorResponse => {
+  return (response.json() as Record<string, any>) as ErrorResponse
+}
+
+const throwError = async (response: Response) => {
+  const responseError = await parseError(response)
+
+  throw {
+    message: responseError.message,
+    response,
+  }
+}
+
 export const fetchWeather = (location: string): Promise<WeatherResponse> => {
   const url = `${API_URL}/weather?q=${location}&appid=${API_KEY}&units=metric`
 
-  return window.fetch(url).then(response => {
+  return window.fetch(url).then(async response => {
+    if (response.status !== 200) {
+      await throwError(response)
+    }
+
     return (response.json() as Record<string, any>) as WeatherResponse
   })
 }
@@ -172,8 +194,12 @@ export const fetchWeather = (location: string): Promise<WeatherResponse> => {
 export const fetchForecast = (location: string): Promise<ForecastResponse> => {
   const url = `${API_URL}/forecast?q=${location}&appid=${API_KEY}&units=metric`
 
-  return window.fetch(url).then(response => {
-    return (response.json() as Record<string, any>) as ForecastResponse
+  return window.fetch(url).then(async response => {
+    if (response.status !== 200) {
+      await throwError(response)
+    }
+
+    return (await (response.json() as Record<string, any>)) as ForecastResponse
   })
 }
 
