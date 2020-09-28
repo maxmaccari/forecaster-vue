@@ -2,7 +2,7 @@
 
 exports[`Home renders the view properly 1`] = `
 <div class="flex items-center justify-center h-full home">
-  <div class="px-2 py-3 sm:p-6 w-450 bg-gray-translucid"><img class="m-auto" alt="Forecaster">
+  <div class="w-full max-w-md px-2 py-3 sm:p-6 bg-gray-translucid"><img class="m-auto" alt="Forecaster">
     <hr class="w-full mt-4 border-gray-500 sm:mt-5">
     <form class="flex w-full mt-4 sm:mt-5" data-test-id="locationForm"><input type="text" class="flex-1 input" placeholder="Where are you now?" data-test-id="locationInput"><button type="submit" class="ml-2 btn" disabled="" data-test-id="goButton"> Go </button></form>
     <hr class="w-full mt-4 border-gray-500 sm:mt-5">
