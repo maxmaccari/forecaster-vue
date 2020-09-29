@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center justify-center h-full home">
     <div class="w-full max-w-md px-2 py-3 sm:p-6 bg-gray-translucid">
-      <img class="m-auto" src="@/assets/img/logo.svg" alt="Forecaster" />
+      <AppLogo class="m-auto" src="@/assets/img/logo.svg" />
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
 
@@ -44,10 +44,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import AppLogo from '@/assets/img/logo.svg'
 
 const Component = defineComponent({
   name: 'Home',
-  components: {},
+  components: { AppLogo },
   data() {
     return {
       location: '',

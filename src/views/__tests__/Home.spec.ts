@@ -11,6 +11,7 @@ const createWrapper = (options = {}) => {
       mocks: { $router: router },
       components: {
         RouterLink: {},
+        AppLogo: {},
       },
     },
     ...options,
