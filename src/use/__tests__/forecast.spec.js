@@ -1,7 +1,7 @@
 import { useForecast, clearCache } from '../forecast'
-import mockWeather from './fixtures/weather.json'
-import mockForecast from './fixtures/forecast.json'
-import { Response } from './helpers/fetch'
+import mockWeather from '../../../tests/unit/fixtures/weather.json'
+import mockForecast from '../../../tests/unit/fixtures/forecast.json'
+import { Response } from '../../../tests/unit/helpers/fetch'
 
 describe('useForecast', () => {
   beforeEach(() => {
