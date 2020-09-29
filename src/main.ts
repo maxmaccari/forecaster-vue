@@ -7,5 +7,5 @@ import './css/app.css'
 
 createApp(App)
   .use(router)
-  .component('v-icon', VIcon)
+  .component('VIcon', VIcon)
   .mount('#app')
