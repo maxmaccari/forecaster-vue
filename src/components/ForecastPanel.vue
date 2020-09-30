@@ -2,22 +2,22 @@
   <div class="w-full max-w-4xl p-2 text-indigo-900 bg-gray-100 sm:p-4 md:p-6">
     <div class="flex flex-wrap">
       <span class="mr-4 text-6xl leading-none align-text-top">
-        37º
+        {{ Math.round(forecast.weather.temperature) }}º
       </span>
       <div class="flex flex-col mt-1 text-indigo-800">
         <div class="border-gray-400 sm:border-l sm:pl-2">
-          Monday 28
+          {{ formattedDate }}
         </div>
         <div class="flex items-center mt-1">
           <div>
-            <VIcon file="021-cloud" class="w-8" />
+            <VIcon :file="forecast.weather.icon" class="w-8" />
           </div>
           <div class="flex flex-col ml-2 text-xs">
-            <span>
-              Scattered Clouds
+            <span class="capitalize">
+              {{ forecast.weather.description }}
             </span>
             <span>
-              Fees like: 36º
+              Fees like: {{ Math.round(forecast.weather.feelsLike) }}º
             </span>
           </div>
         </div>
@@ -25,15 +25,21 @@
       <div
         class="flex flex-col w-full mt-1 border-gray-400 sm:border-l sm:pl-2 sm:ml-4 sm:w-auto"
       >
-        <div><span class="font-light">Min</span>: 37º</div>
-        <div><span class="font-light">Max</span>: 37º</div>
+        <div>
+          <span class="font-light">Min</span>:
+          {{ forecast.weather.minTemperature }}º
+        </div>
+        <div>
+          <span class="font-light">Max</span>:
+          {{ forecast.weather.maxTemperature }}º
+        </div>
       </div>
     </div>
 
     <div class="flex flex-col sm:flex-row sm:justify-between">
       <div>
         <div class="text-3xl sm:text-4xl">
-          Cuiabá
+          {{ forecast.name }}
         </div>
 
         <router-link class="sm:block sm:w-48 change-btn" :to="{ name: 'Home' }">
@@ -50,34 +56,26 @@
         <div class="sm:text-sm">Next 24 hours summary</div>
 
         <div class="flex flex-wrap">
-          <div class="flex w-1/2 mt-2 sm:w-1/3">
-            <div><v-icon file="021-cloud" class="w-8" /></div>
-            <div class="ml-2">
-              <div class="text-3xl font-bold leading-none sm:text-2xl">37º</div>
-              <div class="text-lg font-light sm:text-base sm:mt-1">5:00 PM</div>
-              <div class="text-sm text-gray-600 sm:text-xs">47% cloudness</div>
-            </div>
-          </div>
           <div
-            class="flex w-1/2 mt-2 border-gray-400 sm:w-1/3 sm:border-l sm:pl-2"
+            class="flex w-1/2 mt-2 sm:w-1/3 sm:mt-2"
+            :class="{
+              'border-gray-400 sm:border-l sm:pl-2': index >= 1,
+              'mt-4': index === 2,
+            }"
+            v-for="(summary, index) in nextHoursSummary"
+            :key="index"
           >
-            <div><v-icon file="021-night" class="w-8" /></div>
+            <div><v-icon :file="summary.icon" class="w-8" /></div>
             <div class="ml-2">
-              <div class="text-3xl font-bold leading-none sm:text-2xl">27º</div>
-              <div class="text-lg font-light sm:text-base sm:mt-1">
-                11:00 PM
+              <div class="text-3xl font-bold leading-none sm:text-2xl">
+                {{ Math.round(summary.temperature) }}º
               </div>
-              <div class="text-sm text-gray-600 sm:text-xs">3% cloudness</div>
-            </div>
-          </div>
-          <div
-            class="flex w-1/2 mt-4 border-gray-400 sm:w-1/3 sm:border-l sm:pl-2 sm:mt-2"
-          >
-            <div><v-icon file="021-night" class="w-8" /></div>
-            <div class="ml-2">
-              <div class="text-3xl font-bold leading-none sm:text-2xl">23º</div>
-              <div class="text-lg font-light sm:text-base sm:mt-1">5:00 AM</div>
-              <div class="text-sm text-gray-600 sm:text-xs">4% cloudness</div>
+              <div class="text-lg font-light sm:text-base sm:mt-1">
+                {{ summary.time }}
+              </div>
+              <div class="text-sm text-gray-600 sm:text-xs">
+                {{ summary.clouds }}% cloudness
+              </div>
             </div>
           </div>
         </div>
@@ -91,22 +89,23 @@
         class="grid grid-flow-row grid-cols-2 gap-2 mt-2 sm:gap-3 sm:grid-cols-3 md:grid-cols-6 md:gap-2"
       >
         <div
-          v-for="index in 6"
+          v-for="(weather, index) in nextWeek"
           :key="index"
           class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"
         >
-          <div class="md:text-sm">Monday 28</div>
-          <v-icon file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2" />
+          <div class="md:text-sm">{{ weather.day }}</div>
+          <v-icon
+            :file="weather.icon"
+            class="w-20 mx-auto mt-1 md:w-16 md:mt-2"
+          />
           <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
           <div class="text-sm capitalize md:text-xs md:mt-2">
-            scattered clouds
+            {{ weather.description }}
           </div>
           <div class="text-xs capitalize md:mt-1">
-            47% cloudiness
+            {{ weather.clouds }}% cloudiness
           </div>
-          <div class="text-xs capitalize md:mt-1">
-            Min: 36º
-          </div>
+          <div class="text-xs capitalize md:mt-1">Min: {{ weather.min }}º</div>
           <v-icon
             file="circle-right"
             class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"
@@ -118,19 +117,103 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { Forecast } from '@/use/forecast'
 
 export default defineComponent({
   name: 'ForecastPanel',
   props: {
     forecast: {
-      type: Object,
+      type: Forecast,
       required: true,
     },
     location: {
       type: String,
       required: true,
     },
+  },
+  setup(props) {
+    const dateFormat = new Intl.DateTimeFormat('en-US', {
+      day: 'numeric',
+      weekday: 'long',
+    })
+    const formattedDate = computed(() =>
+      dateFormat.format(new Date(props.forecast.timestamp * 1000))
+    )
+
+    const nextHoursSummary = computed(() => {
+      const timeFormat = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+      })
+
+      return [
+        props.forecast.details[0],
+        props.forecast.details[2],
+        props.forecast.details[4],
+      ].map(detail => ({
+        temperature: detail.weather.temperature,
+        time: timeFormat.format(new Date(detail.timestamp * 1000)),
+        clouds: detail.clouds,
+        icon: detail.weather.icon,
+      }))
+    })
+
+    const nextWeek = computed(() => {
+      return [
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+        {
+          temperature: 25,
+          description: 'scattered clouds',
+          day: '28 Monday',
+          date: '2020-28-05',
+          clouds: 79,
+          icon: '021-rain-1',
+          min: 36,
+        },
+      ]
+    })
+
+    return { formattedDate, nextHoursSummary, nextWeek }
   },
 })
 </script>

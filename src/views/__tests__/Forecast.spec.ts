@@ -2,7 +2,8 @@ import { shallowMount, mount } from '@vue/test-utils'
 import Forecast from '../Forecast.vue'
 import ForecastPanel from '@/components/ForecastPanel.vue'
 import flushPromises from 'flush-promises'
-import { Forecast as ForecastObj, useForecast } from '@/use/forecast'
+import { useForecast } from '@/use/forecast'
+import { buildForecast } from '@unit/helpers/forecast'
 
 jest.mock('@/use/forecast')
 const mockedUseForecast = useForecast as jest.MockedFunction<typeof useForecast>
@@ -16,7 +17,7 @@ describe('Forecast', () => {
   })
 
   it('renders ForecastPanel passing the location and the loaded forecast data as props', async () => {
-    const data = ({} as ForecastObj)
+    const data = buildForecast()
     mockedUseForecast.mockResolvedValue(data)
     const location = 'barcelona'
     const wrapper = mount(Forecast, {

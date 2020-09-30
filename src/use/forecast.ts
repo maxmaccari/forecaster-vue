@@ -158,6 +158,8 @@ export class ForecastDetails {
 export class Forecast {
   name = ''
   country = ''
+  timestamp = 0
+  timezone = 0
   weather: Weather = new Weather()
   wind: Wind = new Wind()
   details: ForecastDetails[] = []
@@ -165,6 +167,8 @@ export class Forecast {
   constructor(weather: WeatherResponse, forecast: ForecastResponse) {
     this.name = weather.name
     this.country = forecast.city.country
+    this.timestamp = weather.dt
+    this.timezone = weather.timezone
     this.weather = new Weather(weather)
     this.wind = new Wind(weather.wind)
     this.details = forecast.list.map(details => {
