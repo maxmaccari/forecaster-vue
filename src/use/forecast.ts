@@ -29,14 +29,16 @@ declare interface WindResponse {
   deg: number
 }
 
+declare interface WeatherListResponse {
+  id: number
+  main: string
+  description: string
+  icon: string
+}
+
 declare interface WeatherResponse {
   coord: { lon: number; lat: number }
-  weather: {
-    id: number
-    main: string
-    description: string
-    icon: string
-  }[]
+  weather: WeatherListResponse[]
   base: string
   main: {
     temp: number
@@ -78,14 +80,7 @@ declare interface ListResponse {
     humidity: number
     temp_kf: number
   }
-  weather: [
-    {
-      id: number
-      main: string
-      description: string
-      icon: string
-    }
-  ]
+  weather: WeatherListResponse[]
   clouds: { all: number }
   wind: WindResponse
   visibility: number

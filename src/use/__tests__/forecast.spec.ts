@@ -1,23 +1,25 @@
 import { useForecast, clearCache } from '../forecast'
-import mockWeather from '../../../tests/unit/fixtures/weather.json'
-import mockForecast from '../../../tests/unit/fixtures/forecast.json'
-import { Response } from '../../../tests/unit/helpers/fetch'
+import mockWeather from '@unit/fixtures/weather.json'
+import mockForecast from '@unit/fixtures/forecast.json'
+import { Response } from '@unit/helpers/fetch'
 
 describe('useForecast', () => {
   beforeEach(() => {
-    clearCache()
-    window.fetch = jest.fn()
-    jest.spyOn(window, 'fetch').mockImplementation(url => {
+    (window as any).fetch = jest.fn((url: string) => {
       if (url.includes('/forecast')) {
         return Promise.resolve(new Response(mockForecast))
       } else {
         return Promise.resolve(new Response(mockWeather))
       }
+
+      clearCache()
     })
   })
 
   afterEach(() => {
-    delete window.fetch
+    if ((window as any).fetch) {
+      delete (window as any).fetch
+    }
   })
 
   it('calls fetch to weather and forecast endpoints with the location', async () => {

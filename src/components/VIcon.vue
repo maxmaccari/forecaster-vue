@@ -16,12 +16,13 @@ export default defineComponent({
   computed: {
     icon() {
       const file: string = this.file
-      return defineAsyncComponent(() =>
-        import(
-          /* webpackChunkName: "icons" */
-          /* webpackMode: "lazy-once" */
-          `@/assets/icons/${file}.svg`
-        )
+      return defineAsyncComponent(
+        async () =>
+          await import(
+            /* webpackChunkName: "icons" */
+            /* webpackMode: "lazy-once" */
+            '@/assets/icons/' + file + '.svg'
+          )
       )
     },
   },

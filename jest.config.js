@@ -4,4 +4,7 @@ module.exports = {
     '^.+\\.vue$': 'vue-jest',
   },
   setupFiles: ['<rootDir>/tests/unit/setup.ts'],
+  moduleNameMapper: {
+    '^@unit(.*)$': '<rootDir>/tests/unit/$1',
+  },
 }
