@@ -68,7 +68,7 @@
             <div><v-icon :file="summary.icon" class="w-8" /></div>
             <div class="ml-2">
               <div class="text-3xl font-bold leading-none sm:text-2xl">
-                {{ Math.round(summary.temperature) }}º
+                {{ summary.temperature }}º
               </div>
               <div class="text-lg font-light sm:text-base sm:mt-1">
                 {{ summary.time }}
@@ -119,6 +119,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { Forecast } from '@/use/forecast'
+import { getNextHours, getNextWeek, dateFormat } from '@/utils/forecast'
 
 export default defineComponent({
   name: 'ForecastPanel',
@@ -133,79 +134,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const dateFormat = new Intl.DateTimeFormat('en-US', {
-      day: 'numeric',
-      weekday: 'long',
-    })
     const formattedDate = computed(() =>
       dateFormat.format(new Date(props.forecast.timestamp * 1000))
     )
 
-    const nextHoursSummary = computed(() => {
-      const timeFormat = new Intl.DateTimeFormat('en-US', {
-        hour: 'numeric',
-        minute: 'numeric',
-      })
+    const nextHoursSummary = computed(() => getNextHours(props.forecast))
 
-      return [
-        props.forecast.details[0],
-        props.forecast.details[2],
-        props.forecast.details[4],
-      ].map(detail => ({
-        temperature: detail.weather.temperature,
-        time: timeFormat.format(new Date(detail.timestamp * 1000)),
-        clouds: detail.clouds,
-        icon: detail.weather.icon,
-      }))
-    })
-
-    const nextWeek = computed(() => {
-      return props.forecast.details.reduce(
-        (
-          week: {
-            day: string
-            min: number
-            clouds: number
-            icon: string | null
-            temperature: number
-            description: string | null
-          }[],
-          detail
-        ) => {
-          const date = new Date(detail.timestamp * 1000)
-          const day = dateFormat.format(date)
-          const forecast = week.find(
-            (forecast: { day: string }) => forecast.day === day
-          )
-
-          if (!forecast) {
-            week.push({
-              day,
-              clouds: detail.clouds,
-              min: Math.round(detail.weather.minTemperature),
-              icon: detail.weather.icon,
-              temperature: Math.round(detail.weather.temperature),
-              description: detail.weather.description,
-            })
-          } else {
-            if (detail.weather.minTemperature < forecast.min) {
-              forecast.min = Math.round(detail.weather.minTemperature)
-            }
-
-            if (detail.weather.temperature > forecast.temperature) {
-              forecast.temperature = detail.weather.temperature
-            }
-
-            if (date.getHours() > 10 && date.getHours() < 14) {
-              forecast.icon = detail.weather.icon
-            }
-          }
-
-          return week
-        },
-        []
-      )
-    })
+    const nextWeek = computed(() => getNextWeek(props.forecast))
 
     return { formattedDate, nextHoursSummary, nextWeek }
   },

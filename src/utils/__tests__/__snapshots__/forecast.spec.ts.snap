@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getNextHours should return the next hours data based on the forecast data 1`] = `
+Array [
+  Object {
+    "clouds": 100,
+    "icon": "021-cloud",
+    "temperature": 11,
+    "time": "5:00 PM",
+  },
+  Object {
+    "clouds": 52,
+    "icon": "021-cloud",
+    "temperature": 10,
+    "time": "11:00 PM",
+  },
+  Object {
+    "clouds": 0,
+    "icon": "021-sun",
+    "temperature": 14,
+    "time": "5:00 AM",
+  },
+]
+`;
+
+exports[`getNextWeek should return the next week data based on the forecast data 1`] = `
+Array [
+  Object {
+    "clouds": 100,
+    "day": "27 Sunday",
+    "description": "overcast clouds",
+    "icon": "021-cloud",
+    "min": 10,
+    "temperature": 11,
+  },
+  Object {
+    "clouds": 32,
+    "day": "28 Monday",
+    "description": "scattered clouds",
+    "icon": "021-cloud",
+    "min": 10,
+    "temperature": 18,
+  },
+  Object {
+    "clouds": 77,
+    "day": "29 Tuesday",
+    "description": "broken clouds",
+    "icon": "021-cloud",
+    "min": 12,
+    "temperature": 19,
+  },
+  Object {
+    "clouds": 7,
+    "day": "30 Wednesday",
+    "description": "clear sky",
+    "icon": "021-sun",
+    "min": 12,
+    "temperature": 20,
+  },
+  Object {
+    "clouds": 78,
+    "day": "1 Thursday",
+    "description": "broken clouds",
+    "icon": "021-cloudy-1",
+    "min": 13,
+    "temperature": 20,
+  },
+  Object {
+    "clouds": 99,
+    "day": "2 Friday",
+    "description": "overcast clouds",
+    "icon": "021-cloud",
+    "min": 13,
+    "temperature": 17,
+  },
+]
+`;
