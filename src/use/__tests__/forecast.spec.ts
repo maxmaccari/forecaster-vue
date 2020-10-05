@@ -5,7 +5,7 @@ import { Response } from '@unit/helpers/fetch'
 
 describe('useForecast', () => {
   beforeEach(() => {
-    (window as any).fetch = jest.fn((url: string) => {
+    ;(window as any).fetch = jest.fn((url: string) => {
       if (url.includes('/forecast')) {
         return Promise.resolve(new Response(mockForecast))
       } else {

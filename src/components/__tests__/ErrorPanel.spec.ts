@@ -4,18 +4,18 @@ import ErrorPanel from '../ErrorPanel.vue'
 const createWrapper = (options: object = {}) => {
   return shallowMount(ErrorPanel, {
     props: {
-      error: {}
+      error: {},
     },
     global: {
       components: {
         RouterLink: {
           name: 'router-link',
-          props: ['to']
+          props: ['to'],
         },
-      }
+      },
     },
-    ...options
-  })  
+    ...options,
+  })
 }
 
 describe('ErrorPanel', () => {
@@ -29,8 +29,8 @@ describe('ErrorPanel', () => {
     const error = 'My error message'
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
     expect(wrapper.text()).toContain('Something gone wrong')
@@ -42,8 +42,8 @@ describe('ErrorPanel', () => {
     const error = { message: 'My error message' }
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
     expect(wrapper.text()).toContain('Something gone wrong')
@@ -55,8 +55,8 @@ describe('ErrorPanel', () => {
     const error = new TypeError('My message')
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
     expect(wrapper.text()).toContain('Something gone wrong')
@@ -68,16 +68,16 @@ describe('ErrorPanel', () => {
     const error = {
       message: 'not found',
       response: {
-        status: 404
-      }
+        status: 404,
+      },
     }
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
-    expect(wrapper.findComponent({name: 'router-link'}).exists()).toBe(true)
+    expect(wrapper.findComponent({ name: 'router-link' }).exists()).toBe(true)
     expect(wrapper.text()).toContain('Not Found')
     expect(wrapper.text()).toContain('Sorry, the asked city was not found.')
     expect(wrapper.text()).toContain('to try again with another city.')
@@ -87,32 +87,32 @@ describe('ErrorPanel', () => {
     const error = {
       message: 'not found',
       response: {
-        status: 404
-      }
+        status: 404,
+      },
     }
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
-    const homeLink = wrapper.findComponent({name: 'router-link'})
+    const homeLink = wrapper.findComponent({ name: 'router-link' })
 
     expect(homeLink.exists()).toBe(true)
-    expect(homeLink.props('to')).toEqual({ name: 'Home' } )
+    expect(homeLink.props('to')).toEqual({ name: 'Home' })
   })
 
   it('renders the error message if it has other statuses', () => {
     const error = {
       message: 'my message',
       response: {
-        status: 500
-      }
+        status: 500,
+      },
     }
     const wrapper = createWrapper({
       props: {
-        error
-      }
+        error,
+      },
     })
 
     expect(wrapper.text()).toContain('Something gone wrong')

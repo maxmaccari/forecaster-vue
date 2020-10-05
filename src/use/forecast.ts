@@ -122,7 +122,9 @@ export class Weather {
     this.description = weather.weather[0]
       ? weather.weather[0].description
       : null
-    this.icon = weather.weather[0] ? ICON_MAPPING[weather.weather[0].icon] : null
+    this.icon = weather.weather[0]
+      ? ICON_MAPPING[weather.weather[0].icon]
+      : null
     this.temperature = weather.main.temp
     this.minTemperature = weather.main.temp_min
     this.maxTemperature = weather.main.temp_max

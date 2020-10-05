@@ -2,19 +2,19 @@
 
 exports[`getNextHours should return the next hours data based on the forecast data 1`] = `
 Array [
-  Object {
+  NextHoursSummary {
     "clouds": 100,
     "icon": "021-cloud",
     "temperature": 11,
     "time": "5:00 PM",
   },
-  Object {
+  NextHoursSummary {
     "clouds": 52,
     "icon": "021-cloud",
     "temperature": 10,
     "time": "11:00 PM",
   },
-  Object {
+  NextHoursSummary {
     "clouds": 0,
     "icon": "021-sun",
     "temperature": 14,
@@ -25,7 +25,7 @@ Array [
 
 exports[`getNextWeek should return the next week data based on the forecast data 1`] = `
 Array [
-  Object {
+  NextWeekEntry {
     "clouds": 100,
     "day": "27 Sunday",
     "description": "overcast clouds",
@@ -33,7 +33,7 @@ Array [
     "min": 10,
     "temperature": 11,
   },
-  Object {
+  NextWeekEntry {
     "clouds": 32,
     "day": "28 Monday",
     "description": "scattered clouds",
@@ -41,7 +41,7 @@ Array [
     "min": 10,
     "temperature": 18,
   },
-  Object {
+  NextWeekEntry {
     "clouds": 77,
     "day": "29 Tuesday",
     "description": "broken clouds",
@@ -49,7 +49,7 @@ Array [
     "min": 12,
     "temperature": 19,
   },
-  Object {
+  NextWeekEntry {
     "clouds": 7,
     "day": "30 Wednesday",
     "description": "clear sky",
@@ -57,7 +57,7 @@ Array [
     "min": 12,
     "temperature": 20,
   },
-  Object {
+  NextWeekEntry {
     "clouds": 78,
     "day": "1 Thursday",
     "description": "broken clouds",
@@ -65,7 +65,7 @@ Array [
     "min": 13,
     "temperature": 20,
   },
-  Object {
+  NextWeekEntry {
     "clouds": 99,
     "day": "2 Friday",
     "description": "overcast clouds",
