@@ -1,5 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import Home from '../Home.vue'
+import { clearCache } from '@/use/forecast'
+
+jest.mock('@/use/forecast')
 
 const router = {
   push: jest.fn(),
@@ -19,6 +22,10 @@ const createWrapper = (options = {}) => {
 }
 
 describe('Home', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('renders the view properly', () => {
     const wrapper = createWrapper()
 
@@ -55,5 +62,11 @@ describe('Home', () => {
       name: 'Forecast',
       params: { location: 'new york' },
     })
+  })
+
+  it('clears the forecast cache when it is called', async () => {
+    const wrapper = createWrapper()
+
+    expect(clearCache).toBeCalledTimes(1)
   })
 })

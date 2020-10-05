@@ -45,6 +45,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import AppLogo from '@/assets/img/logo.svg'
+import { clearCache } from '@/use/forecast'
 
 const Component = defineComponent({
   name: 'Home',
@@ -58,6 +59,9 @@ const Component = defineComponent({
     isGoDisabled(): boolean {
       return !this.location
     },
+  },
+  mounted() {
+    clearCache()
   },
   methods: {
     goToForecast() {
