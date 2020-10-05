@@ -160,57 +160,51 @@ export default defineComponent({
     })
 
     const nextWeek = computed(() => {
-      return [
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
+      return props.forecast.details.reduce(
+        (
+          week: {
+            day: string
+            min: number
+            clouds: number
+            icon: string | null
+            temperature: number
+            description: string | null
+          }[],
+          detail
+        ) => {
+          const date = new Date(detail.timestamp * 1000)
+          const day = dateFormat.format(date)
+          const forecast = week.find(
+            (forecast: { day: string }) => forecast.day === day
+          )
+
+          if (!forecast) {
+            week.push({
+              day,
+              clouds: detail.clouds,
+              min: Math.round(detail.weather.minTemperature),
+              icon: detail.weather.icon,
+              temperature: Math.round(detail.weather.temperature),
+              description: detail.weather.description,
+            })
+          } else {
+            if (detail.weather.minTemperature < forecast.min) {
+              forecast.min = Math.round(detail.weather.minTemperature)
+            }
+
+            if (detail.weather.temperature > forecast.temperature) {
+              forecast.temperature = detail.weather.temperature
+            }
+
+            if (date.getHours() > 10 && date.getHours() < 14) {
+              forecast.icon = detail.weather.icon
+            }
+          }
+
+          return week
         },
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
-        },
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
-        },
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
-        },
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
-        },
-        {
-          temperature: 25,
-          description: 'scattered clouds',
-          day: '28 Monday',
-          date: '2020-28-05',
-          clouds: 79,
-          icon: '021-rain-1',
-          min: 36,
-        },
-      ]
+        []
+      )
     })
 
     return { formattedDate, nextHoursSummary, nextWeek }
