@@ -23,10 +23,12 @@
       class="flex flex-col w-full mt-1 border-gray-400 sm:border-l sm:pl-2 sm:ml-4 sm:w-auto"
     >
       <div>
-        <span class="font-light">Min</span>: {{ weather.minTemperature }}º
+        <span class="font-light">Min</span>:
+        {{ Math.round(weather.minTemperature) }}º
       </div>
       <div>
-        <span class="font-light">Max</span>: {{ weather.maxTemperature }}º
+        <span class="font-light">Max</span>:
+        {{ Math.round(weather.maxTemperature) }}º
       </div>
     </div>
   </div>

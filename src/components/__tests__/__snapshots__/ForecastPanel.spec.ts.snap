@@ -13,8 +13,8 @@ exports[`ForecastPanel renders the component properly 1`] = `
       </div>
     </div>
     <div class="flex flex-col w-full mt-1 border-gray-400 sm:border-l sm:pl-2 sm:ml-4 sm:w-auto">
-      <div><span class="font-light">Min</span>: 9.44º </div>
-      <div><span class="font-light">Max</span>: 12.22º </div>
+      <div><span class="font-light">Min</span>: 9º </div>
+      <div><span class="font-light">Max</span>: 12º </div>
     </div>
   </div>
   <div class="flex flex-col sm:flex-row sm:justify-between">
