@@ -19,7 +19,9 @@ exports[`ForecastPanel renders the component properly 1`] = `
   </div>
   <div class="flex flex-col sm:flex-row sm:justify-between">
     <div>
-      <div class="text-3xl sm:text-4xl">Berlin</div><a class="sm:block sm:w-48 change-btn"></a>
+      <div class="text-3xl sm:text-4xl">Berlin</div><a class="sm:block sm:w-48 change-btn" to="[object Object]">
+        <v-icon-stub file="pencil-icon" class="inline-block w-4 fill-current"></v-icon-stub><span>Change City</span>
+      </a>
       <div class="mt-1 text-sm text-gray-400 sm:text-xs"> Data fecthed from OpenWeather® API </div>
     </div>
     <div class="mt-2 sm:max-w-md sm:flex-grow sm:mt-4">
@@ -60,8 +62,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
   </div>
   <div class="mt-4 md:mt-8">
     <div class="text-lg">Next Week</div>
-    <div class="grid grid-flow-row grid-cols-2 gap-2 mt-2 sm:gap-3 sm:grid-cols-3 md:grid-cols-6 md:gap-2">
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+    <div class="grid grid-flow-row grid-cols-2 gap-2 mt-2 sm:gap-3 sm:grid-cols-3 md:grid-cols-6 md:gap-2"><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">27 Sunday</div>
         <v-icon-stub file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -69,8 +70,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">100% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 10º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+      </a><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">28 Monday</div>
         <v-icon-stub file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -78,8 +78,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">32% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 10º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+      </a><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">29 Tuesday</div>
         <v-icon-stub file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -87,8 +86,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">77% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 12º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+      </a><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">30 Wednesday</div>
         <v-icon-stub file="021-sun" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -96,8 +94,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">7% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 12º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+      </a><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">1 Thursday</div>
         <v-icon-stub file="021-cloudy-1" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -105,8 +102,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">78% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 13º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-      <div class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
+      </a><a to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
         <div class="md:text-sm">2 Friday</div>
         <v-icon-stub file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon-stub>
         <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
@@ -114,8 +110,7 @@ exports[`ForecastPanel renders the component properly 1`] = `
         <div class="text-xs capitalize md:mt-1">99% cloudiness </div>
         <div class="text-xs capitalize md:mt-1">Min: 13º</div>
         <v-icon-stub file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon-stub>
-      </div>
-    </div>
+      </a></div>
   </div>
 </div>
 `;

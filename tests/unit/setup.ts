@@ -8,6 +8,6 @@ process.env.VUE_APP_API_URL = 'https://api-url.com'
 
 config.global.stubs = ['v-icon', 'v-router-link']
 config.global.components = {
-  VIcon: () => h('svg'),
-  RouterLink: () => h('a')
+  VIcon: (props, context) => h('svg', context.attrs),
+  RouterLink: (props, context) => h('a', context.attrs, context.slots)
 }

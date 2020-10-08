@@ -27,7 +27,7 @@ exports[`getNextWeek should return the next week data based on the forecast data
 Array [
   NextWeekEntry {
     "clouds": 100,
-    "day": "27 Sunday",
+    "date": 2020-09-27T21:00:00.000Z,
     "description": "overcast clouds",
     "icon": "021-cloud",
     "min": 10,
@@ -35,7 +35,7 @@ Array [
   },
   NextWeekEntry {
     "clouds": 32,
-    "day": "28 Monday",
+    "date": 2020-09-28T06:00:00.000Z,
     "description": "scattered clouds",
     "icon": "021-cloud",
     "min": 10,
@@ -43,7 +43,7 @@ Array [
   },
   NextWeekEntry {
     "clouds": 77,
-    "day": "29 Tuesday",
+    "date": 2020-09-29T06:00:00.000Z,
     "description": "broken clouds",
     "icon": "021-cloud",
     "min": 12,
@@ -51,7 +51,7 @@ Array [
   },
   NextWeekEntry {
     "clouds": 7,
-    "day": "30 Wednesday",
+    "date": 2020-09-30T06:00:00.000Z,
     "description": "clear sky",
     "icon": "021-sun",
     "min": 12,
@@ -59,7 +59,7 @@ Array [
   },
   NextWeekEntry {
     "clouds": 78,
-    "day": "1 Thursday",
+    "date": 2020-10-01T06:00:00.000Z,
     "description": "broken clouds",
     "icon": "021-cloudy-1",
     "min": 13,
@@ -67,7 +67,7 @@ Array [
   },
   NextWeekEntry {
     "clouds": 99,
-    "day": "2 Friday",
+    "date": 2020-10-02T06:00:00.000Z,
     "description": "overcast clouds",
     "icon": "021-cloud",
     "min": 13,

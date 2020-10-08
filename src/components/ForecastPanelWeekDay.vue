@@ -1,5 +1,6 @@
 <template>
-  <div
+  <router-link
+    :to="{ name: 'ForecastDetails', params: { date: weather.isoDate } }"
     class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"
   >
     <div class="md:text-sm">{{ weather.day }}</div>
@@ -16,7 +17,7 @@
       file="circle-right"
       class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"
     />
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts">

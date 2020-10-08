@@ -18,6 +18,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackPrefetch: true */ '@/views/Forecast.vue'),
     props: true,
   },
+  {
+    path: '/forecast/:location/:date',
+    name: 'ForecastDetails',
+    component: () => import(/* webpackPrefetch: true */ '@/views/ForecastDetails.vue'),
+    props: true,
+  },
 ]
 
 const router = createRouter({

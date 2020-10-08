@@ -1,5 +1,15 @@
 import { Forecast } from '@/use/forecast'
 
+export const dateFormat = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  weekday: 'long',
+})
+
+export const timeFormat = new Intl.DateTimeFormat('en-US', {
+  hour: 'numeric',
+  minute: 'numeric',
+})
+
 export class NextHoursSummary {
   constructor(
     public temperature: number,
@@ -11,24 +21,22 @@ export class NextHoursSummary {
 
 export class NextWeekEntry {
   constructor(
-    public day: string,
+    public date: Date,
     public clouds: number,
     public min: number,
     public temperature: number,
     public icon: string | null,
     public description: string | null
   ) {}
+
+  get day() {
+    return dateFormat.format(this.date)
+  }
+
+  get isoDate() {
+    return this.date.toISOString().slice(0, 10)
+  }
 }
-
-export const dateFormat = new Intl.DateTimeFormat('en-US', {
-  day: 'numeric',
-  weekday: 'long',
-})
-
-export const timeFormat = new Intl.DateTimeFormat('en-US', {
-  hour: 'numeric',
-  minute: 'numeric',
-})
 
 export const getNextHours = (forecast: Forecast): NextHoursSummary[] => {
   return [forecast.details[0], forecast.details[2], forecast.details[4]].map(
@@ -48,7 +56,8 @@ export const getNextWeek = (forecast: Forecast): NextWeekEntry[] => {
     const forecast = week.find(forecast => forecast.day === day)
 
     if (!forecast) {
-      week.push(new NextWeekEntry(day, 
+      week.push(new NextWeekEntry(
+        date, 
         detail.clouds,
         Math.round(detail.weather.minTemperature),
         Math.round(detail.weather.temperature),
