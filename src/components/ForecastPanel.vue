@@ -1,6 +1,10 @@
 <template>
   <div class="w-full max-w-4xl p-2 text-indigo-900 bg-gray-100 sm:p-4 md:p-6">
-    <ForecastPanelHeader :forecast="forecast" :formatDate="formatDate" />
+    <ForecastHeader
+      :weather="forecast.weather"
+      :city="forecast.name"
+      :date="date"
+    />
 
     <div class="flex flex-col sm:flex-row sm:justify-between">
       <div>
@@ -54,7 +58,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import ForecastPanelHeader from './ForecastPanelHeader.vue'
+import ForecastHeader from './ForecastHeader.vue'
 import ForecastPanelSummary from './ForecastPanelSummary.vue'
 import ForecastPanelWeekDay from './ForecastPanelWeekDay.vue'
 import { Forecast } from '@/use/forecast'
@@ -63,7 +67,7 @@ import { getNextHours, getNextWeek, dateFormat } from '@/utils/forecast'
 export default defineComponent({
   name: 'ForecastPanel',
   components: {
-    ForecastPanelHeader,
+    ForecastHeader,
     ForecastPanelSummary,
     ForecastPanelWeekDay,
   },
@@ -78,14 +82,15 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const formatDate = (timestamp: number) =>
-      dateFormat.format(new Date(timestamp * 1000))
+    const date = computed(() =>
+      dateFormat.format(new Date(props.forecast.timestamp * 1000))
+    )
 
     const nextHoursSummary = computed(() => getNextHours(props.forecast))
 
     const nextWeek = computed(() => getNextWeek(props.forecast))
 
-    return { formatDate, nextHoursSummary, nextWeek }
+    return { date, nextHoursSummary, nextWeek }
   },
 })
 </script>
