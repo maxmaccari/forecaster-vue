@@ -1,73 +1,73 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getNextHours should return the next hours data based on the forecast data 1`] = `
-Array [
+exports[`getNextHours > should return the next hours data based on the forecast data 1`] = `
+[
   NextHoursSummary {
     "clouds": 100,
     "icon": "021-cloud",
     "temperature": 11,
-    "time": "5:00 PM",
+    "time": "6:00 PM",
   },
   NextHoursSummary {
     "clouds": 52,
     "icon": "021-cloud",
     "temperature": 10,
-    "time": "11:00 PM",
+    "time": "12:00 AM",
   },
   NextHoursSummary {
     "clouds": 0,
     "icon": "021-sun",
     "temperature": 14,
-    "time": "5:00 AM",
+    "time": "6:00 AM",
   },
 ]
 `;
 
-exports[`getNextWeek should return the next week data based on the forecast data 1`] = `
-Array [
+exports[`getNextWeek > should return the next week data based on the forecast data 1`] = `
+[
   NextWeekEntry {
     "clouds": 100,
     "date": 2020-09-27T21:00:00.000Z,
     "description": "overcast clouds",
     "icon": "021-cloud",
-    "min": 10,
+    "min": 11,
     "temperature": 11,
   },
   NextWeekEntry {
-    "clouds": 32,
-    "date": 2020-09-28T06:00:00.000Z,
-    "description": "scattered clouds",
+    "clouds": 52,
+    "date": 2020-09-28T03:00:00.000Z,
+    "description": "broken clouds",
     "icon": "021-cloud",
     "min": 10,
     "temperature": 18,
   },
   NextWeekEntry {
-    "clouds": 77,
-    "date": 2020-09-29T06:00:00.000Z,
-    "description": "broken clouds",
+    "clouds": 99,
+    "date": 2020-09-29T03:00:00.000Z,
+    "description": "overcast clouds",
     "icon": "021-cloud",
     "min": 12,
     "temperature": 19,
   },
   NextWeekEntry {
-    "clouds": 7,
-    "date": 2020-09-30T06:00:00.000Z,
-    "description": "clear sky",
+    "clouds": 11,
+    "date": 2020-09-30T03:00:00.000Z,
+    "description": "few clouds",
     "icon": "021-sun",
     "min": 12,
     "temperature": 20,
   },
   NextWeekEntry {
-    "clouds": 78,
-    "date": 2020-10-01T06:00:00.000Z,
-    "description": "broken clouds",
+    "clouds": 89,
+    "date": 2020-10-01T03:00:00.000Z,
+    "description": "overcast clouds",
     "icon": "021-cloudy-1",
     "min": 13,
     "temperature": 20,
   },
   NextWeekEntry {
-    "clouds": 99,
-    "date": 2020-10-02T06:00:00.000Z,
+    "clouds": 100,
+    "date": 2020-10-02T03:00:00.000Z,
     "description": "overcast clouds",
     "icon": "021-cloud",
     "min": 13,

@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import { buildForecast } from '@unit/helpers/forecast'
 import { getNextHours, getNextWeek } from '../forecast'
 
