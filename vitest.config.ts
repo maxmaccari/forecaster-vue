@@ -16,6 +16,6 @@ export default mergeConfig(
         '@unit': path.resolve(__dirname, './tests/unit'),
         '@': path.resolve(__dirname, './src')
       }
-    }
+    },
   })
 )

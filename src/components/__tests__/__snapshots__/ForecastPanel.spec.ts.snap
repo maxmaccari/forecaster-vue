@@ -7,7 +7,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
       <div class="border-gray-400 sm:border-l sm:pl-2">27 Sunday</div>
       <div class="flex items-center mt-1">
         <div>
-          <vicon file="021-cloud" class="w-8"></vicon>
+          <!---->
         </div>
         <div class="flex flex-col ml-2 text-xs"><span class="capitalize">overcast clouds</span><span> Fees like: 10º </span></div>
       </div>
@@ -20,9 +20,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
   <div data-v-4f177bd4="" class="flex flex-col sm:flex-row sm:justify-between">
     <div data-v-4f177bd4="">
       <div data-v-4f177bd4="" class="text-3xl sm:text-4xl">Berlin</div>
-      <router-link data-v-4f177bd4="" class="sm:block sm:w-48 change-btn" to="[object Object]">
-        <v-icon data-v-4f177bd4="" file="pencil-icon" class="inline-block w-4 fill-current"></v-icon><span data-v-4f177bd4="">Change City</span>
-      </router-link>
+      <router-link data-v-4f177bd4="" class="sm:block sm:w-48 change-btn"></router-link>
       <div data-v-4f177bd4="" class="mt-1 text-sm text-gray-400 sm:text-xs"> Data fecthed from OpenWeather® API </div>
     </div>
     <div data-v-4f177bd4="" class="mt-2 sm:max-w-md sm:grow sm:mt-4">
@@ -30,7 +28,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
       <div data-v-4f177bd4="" class="flex flex-wrap">
         <div data-v-4f177bd4="" class="flex w-1/2 mt-2 sm:w-1/3 sm:mt-2">
           <div>
-            <v-icon file="021-cloud" class="w-8"></v-icon>
+            <!---->
           </div>
           <div class="ml-2">
             <div class="text-3xl font-bold leading-none sm:text-2xl">11º </div>
@@ -40,7 +38,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         </div>
         <div data-v-4f177bd4="" class="flex w-1/2 mt-2 sm:w-1/3 sm:mt-2 border-gray-400 sm:border-l sm:pl-2">
           <div>
-            <v-icon file="021-cloud" class="w-8"></v-icon>
+            <!---->
           </div>
           <div class="ml-2">
             <div class="text-3xl font-bold leading-none sm:text-2xl">10º </div>
@@ -50,7 +48,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         </div>
         <div data-v-4f177bd4="" class="flex w-1/2 mt-2 sm:w-1/3 sm:mt-2 border-gray-400 sm:border-l sm:pl-2 mt-4">
           <div>
-            <v-icon file="021-sun" class="w-8"></v-icon>
+            <!---->
           </div>
           <div class="ml-2">
             <div class="text-3xl font-bold leading-none sm:text-2xl">14º </div>
@@ -64,60 +62,12 @@ exports[`ForecastPanel > renders the component properly 1`] = `
   <div data-v-4f177bd4="" class="mt-4 md:mt-8">
     <div data-v-4f177bd4="" class="text-lg">Next Week</div>
     <div data-v-4f177bd4="" class="grid grid-flow-row grid-cols-2 gap-2 mt-2 sm:gap-3 sm:grid-cols-3 md:grid-cols-6 md:gap-2">
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">27 Sunday</div>
-        <v-icon file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">overcast clouds</div>
-        <div class="text-xs capitalize md:mt-1">100% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 11º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">28 Monday</div>
-        <v-icon file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">broken clouds</div>
-        <div class="text-xs capitalize md:mt-1">52% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 10º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">29 Tuesday</div>
-        <v-icon file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">overcast clouds</div>
-        <div class="text-xs capitalize md:mt-1">99% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 12º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">30 Wednesday</div>
-        <v-icon file="021-sun" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">few clouds</div>
-        <div class="text-xs capitalize md:mt-1">11% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 12º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">1 Thursday</div>
-        <v-icon file="021-cloudy-1" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">overcast clouds</div>
-        <div class="text-xs capitalize md:mt-1">89% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 13º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
-      <router-link data-v-4f177bd4="" to="[object Object]" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800">
-        <div class="md:text-sm">2 Friday</div>
-        <v-icon file="021-cloud" class="w-20 mx-auto mt-1 md:w-16 md:mt-2"></v-icon>
-        <div class="mt-1 text-xl font-bold md:text-lg md:mt-2">37º</div>
-        <div class="text-sm capitalize md:text-xs md:mt-2">overcast clouds</div>
-        <div class="text-xs capitalize md:mt-1">100% cloudiness </div>
-        <div class="text-xs capitalize md:mt-1">Min: 13º</div>
-        <v-icon file="circle-right" class="absolute bottom-0 right-0 w-5 mb-2 mr-2 fill-current md:w-4"></v-icon>
-      </router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
+      <router-link data-v-4f177bd4="" class="relative p-2 text-indigo-100 bg-indigo-900 cursor-pointer hover:bg-indigo-800"></router-link>
     </div>
   </div>
 </div>"

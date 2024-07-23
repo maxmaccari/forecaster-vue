@@ -1,20 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import { shallowMount } from '@vue/test-utils'
 import ErrorPanel from '../ErrorPanel.vue'
+import { globalMocks } from '@unit/helpers/global'
 
 const createWrapper = (options: object = {}) => {
   return shallowMount(ErrorPanel, {
     props: {
       error: {},
     },
-    global: {
-      components: {
-        RouterLink: {
-          name: 'router-link',
-          props: ['to'],
-        },
-      },
-    },
+    global: globalMocks(),
     ...options,
   })
 }

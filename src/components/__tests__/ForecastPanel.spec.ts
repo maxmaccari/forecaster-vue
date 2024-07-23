@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 
 import { mount } from '@vue/test-utils'
 import { buildForecast } from '@unit/helpers/forecast'
+import { globalMocks } from '@unit/helpers/global'
 import ForecastPanel from '../ForecastPanel.vue'
 
 const createWrapper = (location: string) => {
@@ -12,7 +13,7 @@ const createWrapper = (location: string) => {
       location,
       forecast,
     },
-    
+    global: globalMocks(),
   })
 
   return { wrapper, forecast }
