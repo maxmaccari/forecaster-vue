@@ -185,8 +185,8 @@ class CacheHash {
 
 let cache: CacheHash = new CacheHash()
 
-const API_URL = process.env.VUE_APP_API_URL
-const API_KEY = process.env.VUE_APP_API_KEY
+const API_URL = import.meta.env.VITE_APP_API_URL
+const API_KEY = import.meta.env.VITE_APP_API_KEY
 
 const parseError = (response: Response): ErrorResponse => {
   return (response.json() as Record<string, any>) as ErrorResponse

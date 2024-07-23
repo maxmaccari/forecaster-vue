@@ -1,7 +1,0 @@
-.input {
-  @apply p-2 text-lg bg-white border border-gray-500;
-
-  &::placeholder {
-    @apply text-gray-600;
-  }
-}

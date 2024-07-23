@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center justify-center h-full home">
     <div class="w-full max-w-md px-2 py-3 sm:p-6 bg-gray-translucid">
-      <AppLogo class="m-auto" src="@/assets/img/logo.svg" />
+      <AppLogo class="m-auto" />
 
       <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
 

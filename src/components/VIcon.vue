@@ -19,9 +19,8 @@ export default defineComponent({
       return defineAsyncComponent(
         async () =>
           await import(
-            /* webpackChunkName: "icons" */
-            /* webpackMode: "lazy-once" */
-            '@/assets/icons/' + file + '.svg'
+            /* @vite-ignore */            
+            '../assets/icons/' + file + '.svg'
           )
       )
     },

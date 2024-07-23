@@ -1,9 +1,37 @@
-@import "tailwindcss/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/components";
-@import './components/buttons.css';
-@import './components/forms.css';
-@import './components/link.css';
+@layer components {
+  .btn {
+    @apply p-2 text-sm text-lg font-bold text-center text-blue-900 bg-gray-500;
+  
+  }
 
-@import "tailwindcss/utilities";
-@import 'utilities';
+  .btn:disabled, .btn.disabled {
+    @apply text-gray-600 bg-gray-400 cursor-default pointer-events-none;
+  }
+
+
+  .link {
+    @apply underline opacity-75 cursor-pointer;
+  }
+
+  .link:hover {
+    @apply opacity-100;
+  }
+
+  .input {
+    @apply p-2 text-lg bg-white border-gray-500;
+  }
+
+  .input::placeholder {
+    @apply text-gray-600;
+  }
+}
+
+@layer utilities {
+  .bg-gray-translucid {
+    background-color: rgba(243, 251, 255, 0.8)
+  }
+}

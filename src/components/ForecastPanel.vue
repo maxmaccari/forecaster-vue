@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div class="mt-2 sm:max-w-md sm:flex-grow sm:mt-4">
+      <div class="mt-2 sm:max-w-md sm:grow sm:mt-4">
         <div class="sm:text-sm">Next 24 hours summary</div>
 
         <div class="flex flex-wrap">

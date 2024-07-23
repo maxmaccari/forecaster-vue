@@ -12,8 +12,8 @@
 
 <script>
 import { ref, onErrorCaptured } from 'vue'
-import ErrorPanel from './ErrorPanel'
-import LoadingPanel from './LoadingPanel'
+import ErrorPanel from './ErrorPanel.vue'
+import LoadingPanel from './LoadingPanel.vue'
 
 export default {
   name: 'AsyncBoundary',
