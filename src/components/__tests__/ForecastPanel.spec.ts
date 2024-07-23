@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { mount } from '@vue/test-utils'
 import { buildForecast } from '@unit/helpers/forecast'
 import ForecastPanel from '../ForecastPanel.vue'

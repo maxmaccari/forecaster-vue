@@ -1,7 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest';
+
+import { mount, flushPromises } from '@vue/test-utils'
 import { h, defineComponent, Suspense } from 'vue'
 import AsyncProvider from '../AsyncProvider.vue'
-import flushPromises from 'flush-promises'
+
 
 describe('AsyncProvider', () => {
   it('renders the component in the slot passing the returned data from the provider', async () => {
