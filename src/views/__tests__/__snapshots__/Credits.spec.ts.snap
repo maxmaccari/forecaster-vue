@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Credits renders the view properly 1`] = `
-<div class="flex items-center justify-center h-full home">
+exports[`Credits > renders the view properly 1`] = `
+"<div class="flex items-center justify-center h-full home">
   <div class="px-2 py-3 sm:p-6 w-450 bg-gray-translucid">
     <h2 class="text-xl font-bold text-center text-blue-900">Credits</h2>
     <hr class="w-full mt-1 border-gray-500"><!-- eslint-disable -->
@@ -10,5 +10,5 @@ exports[`Credits renders the view properly 1`] = `
     <hr class="w-full mt-4 border-gray-500">
     <router-link-stub to="[object Object]" class="block w-full mt-4 text-center btn"></router-link-stub>
   </div>
-</div>
+</div>"
 `;

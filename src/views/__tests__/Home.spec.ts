@@ -1,11 +1,13 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { shallowMount } from '@vue/test-utils'
 import Home from '../Home.vue'
 import { clearCache } from '@/use/forecast'
 
-jest.mock('@/use/forecast')
+vi.mock('@/use/forecast')
 
 const router = {
-  push: jest.fn(),
+  push: vi.fn(),
 }
 
 const createWrapper = (options = {}) => {
@@ -23,7 +25,7 @@ const createWrapper = (options = {}) => {
 
 describe('Home', () => {
   beforeEach(() => {
-    jest.resetAllMocks()
+    vi.resetAllMocks()
   })
 
   it('renders the view properly', () => {

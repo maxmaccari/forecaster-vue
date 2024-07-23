@@ -1,12 +1,13 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { describe, it, expect, vi, MockedFunction } from 'vitest';
+
+import { shallowMount, mount, flushPromises } from '@vue/test-utils'
 import Forecast from '../Forecast.vue'
 import ForecastPanel from '@/components/ForecastPanel.vue'
-import flushPromises from 'flush-promises'
 import { useForecast } from '@/use/forecast'
 import { buildForecast } from '@unit/helpers/forecast'
 
-jest.mock('@/use/forecast')
-const mockedUseForecast = useForecast as jest.MockedFunction<typeof useForecast>
+vi.mock('@/use/forecast')
+const mockedUseForecast = useForecast as MockedFunction<typeof useForecast>
 
 describe('Forecast', () => {
   it('renders the view properly', () => {
