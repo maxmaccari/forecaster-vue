@@ -1,11 +1,14 @@
+import { describe, it, beforeEach, afterEach, expect, vi } from 'vitest'
+
 import { useForecast, clearCache } from '../forecast'
 import mockWeather from '@unit/fixtures/weather.json'
 import mockForecast from '@unit/fixtures/forecast.json'
 import { Response } from '@unit/helpers/fetch'
 
+
 describe('useForecast', () => {
   beforeEach(() => {
-    ;(window as any).fetch = jest.fn((url: string) => {
+    ;(window as any).fetch = vi.fn((url: string) => {
       if (url.includes('/forecast')) {
         return Promise.resolve(new Response(mockForecast))
       } else {
