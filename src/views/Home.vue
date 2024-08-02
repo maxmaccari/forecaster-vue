@@ -64,7 +64,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue'
-import AppLogo from '@/assets/img/logo.svg'
+import AppLogo from '@/assets/img/logo.svg?component'
 import { clearCache } from '@/use/forecast'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { useRouter } from 'vue-router'
