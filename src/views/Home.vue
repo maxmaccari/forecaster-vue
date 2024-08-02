@@ -27,6 +27,26 @@
         </button>
       </form>
 
+      <div v-if="isGeolocationEnabled()" class="mt-8 w-full flex flex-col">
+        <div class="self-center w-1/2 text-center text-gray-darker border-y border-gray py-1">
+          Or
+        </div>
+
+        <button class="btn w-full mt-8" 
+          @click="goToForecastFromLocation" :disabled="fetchingLocation">
+          
+
+          <div v-if="fetchingLocation" class="flex items-center justify-center">
+            Getting location... 
+            <LoadingSpinner class="w-6 h-6 ml-2 opacity-50" />
+          </div>
+          <div class="flex items-baseline justify-center" v-else>
+            <div class="relative inline-flex animate-pulse text-2xl mr-2">⦿</div>
+            Get Weather from My Location
+          </div>
+        </button>
+      </div>
+
       <hr class="w-full mt-4 border-gray sm:mt-5" />
       <p class="mt-3 text-base leading-6 font-light text-primary sm:mt-4">
         Designed and developed by
@@ -46,13 +66,15 @@
 import { defineComponent } from 'vue'
 import AppLogo from '@/assets/img/logo.svg'
 import { clearCache } from '@/use/forecast'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 const Component = defineComponent({
   name: 'Home',
-  components: { AppLogo },
+  components: { AppLogo, LoadingSpinner },
   data() {
     return {
       location: '',
+      fetchingLocation: false
     }
   },
   computed: {
@@ -70,6 +92,27 @@ const Component = defineComponent({
         params: { location: this.location.toLowerCase() },
       })
     },
+    goToForecastFromLocation() {
+      const self = this;
+      this.fetchingLocation = true;
+
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const { latitude, longitude } = position.coords
+          const location = `lat=${latitude}&lon=${longitude}`
+
+          self.fetchingLocation = false;
+          
+          self.$router.push({
+            name: 'Forecast',
+            params: { location },
+          });
+        });
+      }
+    },
+    isGeolocationEnabled() {
+      return 'geolocation' in navigator
+    }
   },
 })
 

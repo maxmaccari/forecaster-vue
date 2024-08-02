@@ -211,8 +211,16 @@ const throwError = async (response: Response) => {
   }
 }
 
+const isCoord = (coord : string) : boolean => {
+  const regex = new RegExp(/^(lat=)(-?\d+\.?\d*)&(lon=)(-?\d+\.?\d*)$/, 'g')
+
+  return regex.test(coord);
+}
+
 export const fetchWeather = (location: string): Promise<WeatherResponse> => {
-  const url = `${API_URL}/weather?q=${location}&appid=${API_KEY}&units=metric`
+  const locationQuery = isCoord(location) ? location : `q=${location}`;
+
+  const url = `${API_URL}/weather?${locationQuery}&appid=${API_KEY}&units=metric`
 
   return window.fetch(url).then(async response => {
     if (response.status !== 200) {
@@ -224,7 +232,9 @@ export const fetchWeather = (location: string): Promise<WeatherResponse> => {
 }
 
 export const fetchForecast = (location: string): Promise<ForecastResponse> => {
-  const url = `${API_URL}/forecast?q=${location}&appid=${API_KEY}&units=metric`
+  const locationQuery = isCoord(location) ? location : `q=${location}`;
+
+  const url = `${API_URL}/forecast?${locationQuery}&appid=${API_KEY}&units=metric`
 
   return window.fetch(url).then(async response => {
     if (response.status !== 200) {
