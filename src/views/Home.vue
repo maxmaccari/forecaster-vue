@@ -32,7 +32,7 @@
           Or
         </div>
 
-        <button class="btn w-full mt-8" 
+        <button class="btn w-full mt-8 text-sm sm:text-base" 
           @click="goToForecastFromLocation" :disabled="fetchingLocation">
           
 
@@ -40,15 +40,15 @@
             Getting location... 
             <LoadingSpinner class="w-6 h-6 ml-2 opacity-50" />
           </div>
-          <div class="flex items-baseline justify-center" v-else>
-            <div class="relative inline-flex animate-pulse text-2xl mr-2">⦿</div>
+          <div class="flex items-center justify-center" v-else>
+            <div class="relative inline-flex animate-pulse text-xl sm:2xl mr-1">⦿</div>
             Get Weather from My Location
           </div>
         </button>
       </div>
 
       <hr class="w-full mt-4 border-gray sm:mt-5" />
-      <p class="mt-3 text-base leading-6 font-light text-primary sm:mt-4">
+      <p class="mt-3 text-base leading-6 font-light text-primary sm:mt-4 text-justify">
         Designed and developed by
         <a
           href="https://www.linkedin.com/in/maxmaccari/"
