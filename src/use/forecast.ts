@@ -106,12 +106,21 @@ declare interface ForecastResponse {
   }
 }
 
-export class Weather {
+export declare interface WeatherCommons {
+  description : string | null
+  icon : string | null
+  min : number
+  max : number
+  temperature : number
+  feelsLike : number
+}
+
+export class Weather implements WeatherCommons {
   description: string | null = null
   icon: string | null = null
   temperature = 0
-  minTemperature = 0
-  maxTemperature = 0
+  min = 0
+  max = 0
   feelsLike = 0
   humidity = 0
   pressure = 0
@@ -126,8 +135,8 @@ export class Weather {
       ? ICON_MAPPING[weather.weather[0].icon]
       : null
     this.temperature = weather.main.temp
-    this.minTemperature = weather.main.temp_min
-    this.maxTemperature = weather.main.temp_max
+    this.min = weather.main.temp_min
+    this.max = weather.main.temp_max
     this.feelsLike = weather.main.feels_like
     this.humidity = weather.main.humidity
     this.pressure = weather.main.pressure
@@ -154,6 +163,7 @@ export class ForecastDetails {
     this.clouds = details.clouds.all
     this.timestamp = details.dt
     this.weather = new Weather(details)
+    this.wind = new Wind(details.wind)
   }
 }
 

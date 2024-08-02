@@ -22,13 +22,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { NextWeekEntry } from '@/utils/forecast'
+import { WeatherSummary } from '@/utils/forecast'
 
 export default defineComponent({
   functional: true,
   props: {
     weather: {
-      type: NextWeekEntry,
+      type: WeatherSummary,
       required: true,
     },
   },

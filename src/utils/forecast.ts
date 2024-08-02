@@ -1,4 +1,4 @@
-import { Forecast } from '@/use/forecast'
+import { Forecast, ForecastDetails, Wind, type WeatherCommons } from '@/use/forecast'
 
 export const dateFormat = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
@@ -19,14 +19,19 @@ export class NextHoursSummary {
   ) {}
 }
 
-export class NextWeekEntry {
+export class WeatherSummary implements WeatherCommons {
   constructor(
     public date: Date,
     public clouds: number,
     public min: number,
+    public max: number,
     public temperature: number,
+    public feelsLike: number,
     public icon: string | null,
-    public description: string | null
+    public description: string | null,
+    public humidity : number,
+    public pressure : number,
+    public wind : Wind
   ) {}
 
   get day() {
@@ -49,24 +54,29 @@ export const getNextHours = (forecast: Forecast): NextHoursSummary[] => {
   )
 }
 
-export const getNextWeek = (forecast: Forecast): NextWeekEntry[] => {
-  return forecast.details.reduce((week: NextWeekEntry[], detail) => {
+export const getNextWeek = (forecast: Forecast): WeatherSummary[] => {
+  return forecast.details.reduce((week: WeatherSummary[], detail) => {
     const date = new Date(detail.timestamp * 1000)
     const day = dateFormat.format(date)
     const forecast = week.find(forecast => forecast.day === day)
 
     if (!forecast) {
-      week.push(new NextWeekEntry(
+      week.push(new WeatherSummary(
         date, 
         detail.clouds,
-        Math.round(detail.weather.minTemperature),
+        Math.round(detail.weather.min),
+        Math.round(detail.weather.max),
         Math.round(detail.weather.temperature),
+        Math.round(detail.weather.feelsLike),
         detail.weather.icon,
         detail.weather.description,
+        detail.weather.humidity,
+        detail.weather.pressure,
+        detail.wind
       ))
     } else {
-      if (detail.weather.minTemperature < forecast.min) {
-        forecast.min = Math.round(detail.weather.minTemperature)
+      if (detail.weather.min < forecast.min) {
+        forecast.min = Math.round(detail.weather.min)
       }
 
       if (detail.weather.temperature > forecast.temperature) {
@@ -80,4 +90,19 @@ export const getNextWeek = (forecast: Forecast): NextWeekEntry[] => {
 
     return week
   }, [])
+}
+
+export const getDetailsWeather = (forecast: Forecast, date : Date) : WeatherSummary => {
+  const entry = getNextWeek(forecast).find(day => day.day === dateFormat.format(date));
+
+  if (!entry) {
+    throw "Weather not found for day: " + dateFormat.format(date)
+  }
+
+  return entry;
+}
+
+export const getDetailsNextHours = (forecast : Forecast, date : Date) : ForecastDetails[] => {
+  const day = dateFormat.format(date)
+  return forecast.details.filter(detail => dateFormat.format(new Date(detail.timestamp * 1000)) === day);
 }

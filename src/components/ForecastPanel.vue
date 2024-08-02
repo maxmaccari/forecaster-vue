@@ -1,8 +1,7 @@
 <template>
-  <div class="w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
+  <div class="flex flex-col w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
     <ForecastHeader
       :weather="forecast.weather"
-      :city="forecast.name"
       :date="date"
     />
 
@@ -24,7 +23,7 @@
         </div>
       </div>
 
-      <div class="mt-4 sm:max-w-md sm:grow ">
+      <div class="mt-4 sm:mt-0 sm:max-w-md sm:grow ">
         <div class="text-lg font-normal sm:text-base sm:font-light">Next 24 hours summary</div>
 
         <div class="flex flex-wrap">
