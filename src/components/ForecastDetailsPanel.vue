@@ -59,16 +59,11 @@
       <div
         class="mt-2 sm:mt-10 grid gap-4 sm:grid-flow-col sm:grid-rows-4"
       >
-        <div v-for="detail in details" :key="detail.timestamp" class="flex">
-          <VIcon :file="detail.weather.icon" class="w-8" />
-          <div class="flex flex-col ml-3">
-            <div>{{ timeFormat.format(detail.timestamp * 1000) }}</div>
-            <div class="flex">
-              <div class="font-bold">{{detail.weather.temperature}}º</div>
-              <div class="ml-2 capitalize">{{ detail.weather.description }}</div>
-            </div>
-          </div>
-        </div>
+        <ForecastDetailsPanelTimeWeather
+          v-for="detail in details"
+          :key="detail.timestamp"
+          :detail="detail"
+        />
       </div>
     </div>
   </div>
@@ -77,12 +72,13 @@
 <script lang="ts">
 import {defineComponent, computed} from 'vue';
 import ForecastHeader from './ForecastHeader.vue'
+import ForecastDetailsPanelTimeWeather from './ForecastDetailsPanelTimeWeather.vue'
 import { Forecast } from '@/use/forecast'
 import { getDetailsNextHours, dateFormat, timeFormat, getDetailsWeather } from '@/utils/forecast'
 
 export default defineComponent({
   name: 'ForecastDetailsPanel',
-  components: { ForecastHeader },
+  components: { ForecastHeader, ForecastDetailsPanelTimeWeather },
   props: {
     forecast: {
       type: Forecast,

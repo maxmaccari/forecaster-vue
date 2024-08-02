@@ -5,19 +5,9 @@ import { buildForecast } from '@unit/helpers/forecast'
 import { globalMocks } from '@unit/helpers/global'
 import ForecastDetailsPanel from '../ForecastDetailsPanel.vue'
 
-const randomDateFromForecast = (forecast) : string => {
-  const days : string[] = forecast.details.map(detail => 
-    new Date(detail.timestamp * 1000).toISOString().slice(0, 10)
-  );
-  const dateDays = [...new Set(days)]
 
-  return dateDays[Math.floor(Math.random() * dateDays.length)];
-}
-
-
-const createWrapper = (location: string) => {
+const createWrapper = (location: string, date: string) => {
   const forecast = buildForecast()
-  const date = randomDateFromForecast(forecast)
 
   const wrapper = mount(ForecastDetailsPanel, {
     props: {
@@ -31,9 +21,9 @@ const createWrapper = (location: string) => {
   return { wrapper, forecast }
 }
 
-describe('ForecastPanel', () => {
+describe('ForecastDetailsPanel', () => {
   it('renders the component properly', () => {
-    const { wrapper } = createWrapper('berlin')
+    const { wrapper } = createWrapper('berlin', '2020-10-01')
 
     expect(wrapper.html()).toMatchSnapshot()
   })

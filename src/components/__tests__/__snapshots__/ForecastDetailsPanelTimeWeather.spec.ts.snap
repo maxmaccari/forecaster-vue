@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ForecastDetailsPanelTimeWeather.spec > renders the component properly 1`] = `
+"<div class="flex">
+  <!---->
+  <div class="flex flex-col ml-3">
+    <div>12:00 AM</div>
+    <div class="flex">
+      <div class="font-bold">12.68º</div>
+      <div class="ml-2 capitalize">overcast clouds</div>
+    </div>
+  </div>
+</div>"
+`;

@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ForecastPanel > renders the component properly 1`] = `
+exports[`ForecastDetailsPanel > renders the component properly 1`] = `
 "<div class="w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
   <div class="flex flex-col sm:flex-row">
     <router-link class="sm:mt-2"></router-link>
     <div class="flex flex-col flex-grow mt-4 sm:mt-0 sm:ml-2">
-      <div class="flex justify-start"><span class="text-7xl sm:text-8xl leading-none align-text-top">17º </span>
+      <div class="flex justify-start"><span class="text-7xl sm:text-8xl leading-none align-text-top">20º </span>
         <div class="ml-2 sm:ml-4 flex flex-col mt-1 text-primary">
-          <div class="w-max text-lg font-light border-gray sm:border-l sm:pl-2">2 Friday</div>
+          <div class="w-max text-lg font-light border-gray sm:border-l sm:pl-2">1 Thursday</div>
           <div class="mt-4 flex items-center text-primary text-sm leading-6 font-light">
             <div>
               <!---->
@@ -18,7 +18,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="ml-1 sm:ml-4 self-end sm:self-auto">
           <div class="flex flex-col sm:h-full pl-3 sm:pl-2 border-gray border-l text-lg leading-5 font-light">
             <div><span class="font-light">Min</span>: <span class="font-bold">13º</span></div>
-            <div><span class="font-light">Max</span>: <span class="font-bold">14º</span></div>
+            <div><span class="font-light">Max</span>: <span class="font-bold">13º</span></div>
           </div>
         </div>
       </div>
@@ -31,8 +31,8 @@ exports[`ForecastPanel > renders the component properly 1`] = `
               <div class="ml-2 font-bold">Wind Direction</div>
             </div>
             <div class="mt-2 flex text-primary/75 self-center items-baseline">
-              <div class="ml-2 sm:-mt-2 border-primary/25 text-2xl antialiased leading-none tracking-tighter" style="rotate: 133deg;"> ➣ </div>
-              <div class="ml-2">4.51 km/h </div>
+              <div class="ml-2 sm:-mt-2 border-primary/25 text-2xl antialiased leading-none tracking-tighter" style="rotate: 51deg;"> ➣ </div>
+              <div class="ml-2">1.11 km/h </div>
             </div>
           </div>
           <div class="flex flex-col items-center border-t sm:border-t-0 sm:border-r border-gray border-dotted sm:border-solid mt-2 pt-2 sm:mt-0 sm:pt-0 sm:pr-2 sm:mr-2">
@@ -47,7 +47,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
               <!---->
               <div class="ml-2 font-bold">Pressure</div>
             </div>
-            <div class="mt-2 text-primary/75 text-center">1001 bar</div>
+            <div class="mt-2 text-primary/75 text-center">1010 bar</div>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>12:00 AM</div>
           <div class="flex">
-            <div class="font-bold">14.16º</div>
+            <div class="font-bold">12.68º</div>
             <div class="ml-2 capitalize">overcast clouds</div>
           </div>
         </div>
@@ -71,8 +71,8 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>3:00 AM</div>
           <div class="flex">
-            <div class="font-bold">12.64º</div>
-            <div class="ml-2 capitalize">overcast clouds</div>
+            <div class="font-bold">12.5º</div>
+            <div class="ml-2 capitalize">broken clouds</div>
           </div>
         </div>
       </div>
@@ -81,8 +81,8 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>6:00 AM</div>
           <div class="flex">
-            <div class="font-bold">14.62º</div>
-            <div class="ml-2 capitalize">overcast clouds</div>
+            <div class="font-bold">16.91º</div>
+            <div class="ml-2 capitalize">few clouds</div>
           </div>
         </div>
       </div>
@@ -91,8 +91,8 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>9:00 AM</div>
           <div class="flex">
-            <div class="font-bold">16.68º</div>
-            <div class="ml-2 capitalize">overcast clouds</div>
+            <div class="font-bold">20.01º</div>
+            <div class="ml-2 capitalize">few clouds</div>
           </div>
         </div>
       </div>
@@ -101,8 +101,8 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>12:00 PM</div>
           <div class="flex">
-            <div class="font-bold">17.01º</div>
-            <div class="ml-2 capitalize">broken clouds</div>
+            <div class="font-bold">19.93º</div>
+            <div class="ml-2 capitalize">few clouds</div>
           </div>
         </div>
       </div>
@@ -111,7 +111,27 @@ exports[`ForecastPanel > renders the component properly 1`] = `
         <div class="flex flex-col ml-3">
           <div>3:00 PM</div>
           <div class="flex">
-            <div class="font-bold">15.11º</div>
+            <div class="font-bold">16.52º</div>
+            <div class="ml-2 capitalize">clear sky</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+        <!---->
+        <div class="flex flex-col ml-3">
+          <div>6:00 PM</div>
+          <div class="flex">
+            <div class="font-bold">15.16º</div>
+            <div class="ml-2 capitalize">broken clouds</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+        <!---->
+        <div class="flex flex-col ml-3">
+          <div>9:00 PM</div>
+          <div class="flex">
+            <div class="font-bold">14.21º</div>
             <div class="ml-2 capitalize">broken clouds</div>
           </div>
         </div>
