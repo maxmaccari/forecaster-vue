@@ -25,53 +25,101 @@ exports[`getNextHours > should return the next hours data based on the forecast 
 
 exports[`getNextWeek > should return the next week data based on the forecast data 1`] = `
 [
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 100,
     "date": 2020-09-27T21:00:00.000Z,
     "description": "overcast clouds",
+    "feelsLike": 9,
+    "humidity": 79,
     "icon": "021-cloud",
+    "max": 12,
     "min": 11,
+    "pressure": 1007,
     "temperature": 11,
+    "wind": Wind {
+      "direction": 204,
+      "speed": 2.85,
+    },
   },
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 52,
     "date": 2020-09-28T03:00:00.000Z,
     "description": "broken clouds",
+    "feelsLike": 8,
+    "humidity": 76,
     "icon": "021-cloud",
+    "max": 10,
     "min": 10,
+    "pressure": 1009,
     "temperature": 18,
+    "wind": Wind {
+      "direction": 192,
+      "speed": 1.9,
+    },
   },
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 99,
     "date": 2020-09-29T03:00:00.000Z,
     "description": "overcast clouds",
+    "feelsLike": 11,
+    "humidity": 71,
     "icon": "021-cloud",
+    "max": 13,
     "min": 12,
+    "pressure": 1014,
     "temperature": 19,
+    "wind": Wind {
+      "direction": 316,
+      "speed": 1.02,
+    },
   },
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 11,
     "date": 2020-09-30T03:00:00.000Z,
     "description": "few clouds",
+    "feelsLike": 12,
+    "humidity": 80,
     "icon": "021-sun",
+    "max": 12,
     "min": 12,
+    "pressure": 1015,
     "temperature": 20,
+    "wind": Wind {
+      "direction": 248,
+      "speed": 0.68,
+    },
   },
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 89,
     "date": 2020-10-01T03:00:00.000Z,
     "description": "overcast clouds",
+    "feelsLike": 11,
+    "humidity": 73,
     "icon": "021-cloudy-1",
+    "max": 13,
     "min": 13,
+    "pressure": 1010,
     "temperature": 20,
+    "wind": Wind {
+      "direction": 141,
+      "speed": 1.11,
+    },
   },
-  NextWeekEntry {
+  WeatherSummary {
     "clouds": 100,
     "date": 2020-10-02T03:00:00.000Z,
     "description": "overcast clouds",
+    "feelsLike": 11,
+    "humidity": 73,
     "icon": "021-cloud",
+    "max": 14,
     "min": 13,
+    "pressure": 1001,
     "temperature": 17,
+    "wind": Wind {
+      "direction": 223,
+      "speed": 4.51,
+    },
   },
 ]
 `;

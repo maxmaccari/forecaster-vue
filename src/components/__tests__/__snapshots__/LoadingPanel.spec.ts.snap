@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`LoadingPanel > renders the component properly 1`] = `
-"<div class="flex flex-col items-center px-12 py-3 bg-gray-translucid">
-  <loading-spinner-stub class="block w-16"></loading-spinner-stub><span class="text-2xl text-indigo-900">Loading...</span>
+"<div class="min-w-64 flex flex-col items-center px-12 py-6 bg-secondary/[0.8]">
+  <loading-spinner-stub class="block w-16"></loading-spinner-stub><span class="text-lg font-light text-primary">Loading...</span>
 </div>"
 `;
