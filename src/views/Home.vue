@@ -27,7 +27,7 @@
         </button>
       </form>
 
-      <div v-if="isGeolocationEnabled()" class="mt-8 w-full flex flex-col">
+      <div v-if="isGeolocationEnabled" class="mt-8 w-full flex flex-col">
         <div class="self-center w-1/2 text-center text-gray-darker border-y border-gray py-1">
           Or
         </div>
@@ -63,57 +63,59 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, computed, onMounted } from 'vue'
 import AppLogo from '@/assets/img/logo.svg'
 import { clearCache } from '@/use/forecast'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import { useRouter } from 'vue-router'
+
 
 const Component = defineComponent({
-  name: 'Home',
+  name: 'HomePage',
   components: { AppLogo, LoadingSpinner },
-  data() {
-    return {
-      location: '',
-      fetchingLocation: false
-    }
-  },
-  computed: {
-    isGoDisabled(): boolean {
-      return !this.location
-    },
-  },
-  mounted() {
-    clearCache()
-  },
-  methods: {
-    goToForecast() {
-      this.$router.push({
+  setup() {
+    const location = ref('');
+    const fetchingLocation = ref(false);
+    const isGoDisabled = computed(() => !location.value);
+
+    const isGeolocationEnabled = 'geolocation' in navigator;
+
+    const router = useRouter();
+
+
+    const goToForecast = () => {
+      router.push({
         name: 'Forecast',
-        params: { location: this.location.toLowerCase() },
+        params: { location: location.value.toLowerCase() },
       })
-    },
-    goToForecastFromLocation() {
-      const self = this;
-      this.fetchingLocation = true;
+    }
+
+    const goToForecastFromLocation = () => {
+      fetchingLocation.value = true;
 
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
           const { latitude, longitude } = position.coords
           const location = `lat=${latitude}&lon=${longitude}`
 
-          self.fetchingLocation = false;
+          fetchingLocation.value = false;
           
-          self.$router.push({
+          router.push({
             name: 'Forecast',
             params: { location },
           });
         });
       }
-    },
-    isGeolocationEnabled() {
-      return 'geolocation' in navigator
     }
-  },
+
+    onMounted(() => {
+      clearCache()
+    })
+
+    return {
+      location, fetchingLocation, isGoDisabled, goToForecast, goToForecastFromLocation, isGeolocationEnabled
+    }
+  }
 })
 
 export default Component
