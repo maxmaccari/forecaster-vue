@@ -1,6 +1,6 @@
 <template>
-  <div class="px-6 py-4 pt-2 text-gray-800 w-450 bg-gray-translucid">
-    <h2 class="flex items-center mt-4 text-2xl text-gray-900">
+  <div class="px-6 py-4 pt-2 text-primary min-w-64 max-w-md mx-8 sm:mx-0 bg-secondary/[0.8]">
+    <h2 class="flex items-center mt-4 text-lg font-light text-primary text-justify">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -13,15 +13,15 @@
           clip-rule="evenodd"
         />
       </svg>
-      <span class="ml-1">
+      <span class="ml-1 text-lg leading-6 font-normal">
         {{ title }}
       </span>
     </h2>
-    <p class="mt-2">{{ message }}</p>
-    <p class="mt-2" v-if="isTryAgain">
+    <p class="mt-2 text-base leading-6 font-light">{{ message }}</p>
+    <p class="mt-2 text-base leading-6 font-light" v-if="isTryAgain">
       <a class="link" @click="$emit('try-again')">Click here</a> to try again.
     </p>
-    <p class="mt-2" v-else>
+    <p class="mt-2 text-base leading-6 font-light" v-else>
       <router-link :to="{ name: 'Home' }" class="link">Click here</router-link>
       to try again with another city.
     </p>

@@ -1,17 +1,17 @@
 <template>
-  <div class="flex flex-wrap">
-    <span class="mr-4 text-6xl leading-none align-text-top">
+  <div class="flex justify-between sm:justify-start">
+    <span class="text-7xl sm:text-8xl leading-none align-text-top">
       {{ Math.round(weather.temperature) }}º
     </span>
-    <div class="flex flex-col mt-1 text-indigo-800">
-      <div class="border-gray-400 sm:border-l sm:pl-2">
+    <div class="ml-2 sm:ml-4 flex flex-col mt-1 text-primary">
+      <div class="w-max text-lg font-light border-gray-darker sm:border-l sm:pl-2">
         {{ date }}
       </div>
-      <div class="flex items-center mt-1">
+      <div class="mt-4 flex items-center text-primary text-sm leading-6 font-light">
         <div>
           <VIcon :file="weather.icon" class="w-8" />
         </div>
-        <div class="flex flex-col ml-2 text-xs">
+        <div class="flex flex-col ml-2">
           <span class="capitalize">
             {{ weather.description }}
           </span>
@@ -20,15 +20,15 @@
       </div>
     </div>
     <div
-      class="flex flex-col w-full mt-1 border-gray-400 sm:border-l sm:pl-2 sm:ml-4 sm:w-auto"
+      class="ml-1 pl-3 sm:pl-2 sm:ml-4 self-end sm:self-start flex flex-col  border-gray-darker border-l sm:justify-center text-lg leading-5 font-light "
     >
       <div>
         <span class="font-light">Min</span>:
-        {{ Math.round(weather.minTemperature) }}º
+        <span class="font-bold">{{ Math.round(weather.minTemperature) }}º</span>
       </div>
       <div>
         <span class="font-light">Max</span>:
-        {{ Math.round(weather.maxTemperature) }}º
+        <span class="font-bold">{{ Math.round(weather.maxTemperature) }}º</span>
       </div>
     </div>
   </div>

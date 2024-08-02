@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col items-center px-12 py-3 bg-gray-translucid">
+  <div class="min-w-64 flex flex-col items-center px-12 py-6 bg-secondary/[0.8]">
     <LoadingSpinner class="block w-16" />
-    <span class="text-2xl text-indigo-900">Loading...</span>
+    <span class="text-lg font-light text-primary">Loading...</span>
   </div>
 </template>
 

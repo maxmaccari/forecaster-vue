@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center h-full home">
-    <div class="px-2 py-3 sm:p-6 w-450 bg-gray-translucid">
+    <div class="px-2 py-3 sm:p-6 w-450 bg-gray-100/75">
       <h2 class="text-xl font-bold text-center text-blue-900">Credits</h2>
 
       <hr class="w-full mt-1 border-gray-500" />

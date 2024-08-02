@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-center h-full home">
-    <div class="w-full max-w-md px-2 py-3 sm:p-6 bg-gray-translucid">
+    <div class="w-full max-w-md px-2 py-3 mx-4 sm:mx-0 sm:p-6 bg-secondary/[0.8]">
       <AppLogo class="m-auto" />
 
-      <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
+      <hr class="w-full mt-4 border-gray sm:mt-5" />
 
       <form
         @submit.prevent="goToForecast"
@@ -27,8 +27,8 @@
         </button>
       </form>
 
-      <hr class="w-full mt-4 border-gray-500 sm:mt-5" />
-      <p class="mt-3 font-thin text-blue-900 sm:mt-4">
+      <hr class="w-full mt-4 border-gray sm:mt-5" />
+      <p class="mt-3 text-base leading-6 font-light text-primary sm:mt-4">
         Designed and developed by
         <a
           href="https://www.linkedin.com/in/maxmaccari/"

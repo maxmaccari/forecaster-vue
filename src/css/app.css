@@ -2,36 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-primary: 33 43 90;
+    --color-primary-darker: 17 14 60;
+    --color-secondary: 243 251 255;
+    --color-acent: 125 179 241;
+    --color-gray: 183 193 201;
+    --color-gray-darker: 148 147 150;
+    --color-white: 255 253 255;
+  }
+}
+
+
 @layer components {
   .btn {
-    @apply p-2 text-sm text-lg font-bold text-center text-blue-900 bg-gray-500;
-  
+    @apply p-2 text-lg font-bold text-center text-primary bg-gray/80;
   }
 
+  .btn--sm {
+    @apply py-1 text-sm font-normal;
+  }
+  
+
+  .btn:hover {
+    @apply bg-gray;
+  }
+
+
   .btn:disabled, .btn.disabled {
-    @apply text-gray-600 bg-gray-400 cursor-default pointer-events-none;
+    @apply bg-gray/50 text-primary/50;
   }
 
 
   .link {
-    @apply underline opacity-75 cursor-pointer;
+    @apply underline cursor-pointer;
   }
 
   .link:hover {
-    @apply opacity-100;
+    @apply opacity-80;
   }
 
   .input {
-    @apply p-2 text-lg bg-white border-gray-500;
+    @apply p-2 bg-white border border-gray text-primary text-lg leading-6 font-normal;
   }
 
   .input::placeholder {
-    @apply text-gray-600;
+    @apply text-gray-darker font-light;
   }
 }
 
-@layer utilities {
-  .bg-gray-translucid {
-    background-color: rgba(243, 251, 255, 0.8)
-  }
-}

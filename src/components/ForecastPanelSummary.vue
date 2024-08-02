@@ -2,13 +2,13 @@
   <div class="flex ">
     <div><v-icon :file="summary.icon" class="w-8" /></div>
     <div class="ml-2">
-      <div class="text-3xl font-bold leading-none sm:text-2xl">
+      <div class="text-2xl leading-6 font-bold">
         {{ summary.temperature }}º
       </div>
-      <div class="text-lg font-light sm:text-base sm:mt-1">
+      <div class="mt-1 text-base leading-6 font-light">
         {{ summary.time }}
       </div>
-      <div class="text-sm text-gray-600 sm:text-xs">
+      <div class="text-xs font-light text-gray-darker">
         {{ summary.clouds }}% cloudness
       </div>
     </div>
