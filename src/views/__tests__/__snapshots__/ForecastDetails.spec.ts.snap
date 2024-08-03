@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ForecastDetails > renders the view properly 1`] = `
+"<div class="flex items-center justify-center min-h-screen">
+  <async-boundary-stub></async-boundary-stub>
+</div>"
+`;

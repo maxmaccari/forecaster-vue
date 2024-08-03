@@ -32,7 +32,8 @@
           Or
         </div>
 
-        <button class="btn w-full mt-8 text-sm sm:text-base" 
+        <button class="btn w-full mt-8 text-sm sm:text-base"
+          data-test-id="goToForecastFromLocationButton"
           @click="goToForecastFromLocation" :disabled="fetchingLocation">
           
 
@@ -92,6 +93,7 @@ const Component = defineComponent({
     const goToForecastFromLocation = () => {
       fetchingLocation.value = true;
 
+      
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
           const { latitude, longitude } = position.coords

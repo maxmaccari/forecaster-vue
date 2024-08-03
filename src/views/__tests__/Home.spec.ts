@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { shallowMount } from '@vue/test-utils'
+import { flushPromises, shallowMount } from '@vue/test-utils'
 import { useRouter } from 'vue-router'
 import Home from '../Home.vue'
 import { clearCache } from '../../use/forecast'
@@ -71,6 +71,48 @@ describe('Home', () => {
       name: 'Forecast',
       params: { location: 'new york' },
     })
+  })
+
+  it("doesn't shows get weather from my location if navigator doesn't support geolocation", () => {
+    const wrapper = createWrapper()
+
+    const button = wrapper.find('[data-test-id="goToForecastFromLocationButton"]')
+
+    expect(button.exists()).toBe(false)
+  })
+
+  it("shows get weather from my location if navigator supports geolocation", () => {
+    (window as any).navigator.geolocation = {}
+
+    const wrapper = createWrapper()
+
+    const button = wrapper.find('[data-test-id="goToForecastFromLocationButton"]')
+
+    expect(button.exists()).toBe(true)
+
+    delete (window as any).navigator.geolocation
+  })
+
+  it("pushes to Forecast route if go from location button is pressed with current geolocation ", async () => {
+    (window as any).navigator.geolocation = {
+      getCurrentPosition: vi.fn()
+    }
+    const resolvedCords = { coords: { latitude: 0, longitude: 0 }}
+    vi.mocked(navigator.geolocation.getCurrentPosition).mockImplementation((cb) => cb(resolvedCords as any))
+
+    const wrapper = createWrapper()
+
+    const button = wrapper.find('[data-test-id="goToForecastFromLocationButton"]')
+    await button.trigger('click')
+
+    await flushPromises()
+
+    expect(mockedRouter.push).toBeCalledWith({
+      name: 'Forecast',
+      params: { location: 'lat=0&lon=0' },
+    })
+
+    delete (window as any).navigator.geolocation
   })
 
   it('clears the forecast cache when it is called', async () => {
