@@ -1,12 +1,12 @@
 <template>
   <div class="flex items-center justify-center h-full home">
-    <div class="px-2 py-3 sm:p-6 w-450 bg-gray-100/75">
-      <h2 class="text-xl font-bold text-center text-blue-900">Credits</h2>
+    <div class="bg-secondary/75 max-w-md px-2 py-3 mx-4 sm:mx-0">
+      <h2 class="text-3xl font-bold text-center text-primary">Credits</h2>
 
-      <hr class="w-full mt-1 border-gray-500" />
+      <hr class="w-full mt-1 border-gray" />
 
       <!-- eslint-disable -->
-      <p class="mt-4 text-blue-900">
+      <p class="mt-4 text-primary">
         Icons taken from
         <a href="https://www.flaticon.com/" target="blank" class="link">www.flaticon.com</a>
         made by:
@@ -32,7 +32,7 @@
         >Linector</a>.
       </p>
 
-      <p class="mt-3 text-blue-900">
+      <p class="mt-3 text-primary">
         Photos taken from
         <a href="https://unsplash.com/" target="_blank" class="link">unsplash.com</a> by:
         <a
@@ -68,7 +68,7 @@
       </p>
       <!-- eslint-enable -->
 
-      <hr class="w-full mt-4 border-gray-500" />
+      <hr class="w-full mt-4 border-gray" />
 
       <router-link
         :to="{ name: 'Home' }"
