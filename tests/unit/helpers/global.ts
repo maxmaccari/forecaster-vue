@@ -1,5 +1,4 @@
 import { h } from 'vue'
-import VIcon from '@/components/VIcon.vue'
 
 export const globalMocks = () => {
   return {
@@ -11,7 +10,6 @@ export const globalMocks = () => {
           return h('router-link')
         }
       },
-      VIcon: VIcon,
     },
   }
 }

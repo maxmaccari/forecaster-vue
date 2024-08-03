@@ -1,22 +1,35 @@
+import sunIcon from '@/assets/icons/021-sun.svg?raw'
+import cloudIcon from '@/assets/icons/021-cloud.svg?raw'
+import cloudy1Icon from '@/assets/icons/021-cloudy-1.svg?raw'
+import nightIcon from '@/assets/icons/021-night.svg?raw'
+import night2Icon from '@/assets/icons/021-night-2.svg?raw'
+import rain1Icon from '@/assets/icons/021-rain-1.svg?raw'
+import rain2Icon from '@/assets/icons/021-rain-2.svg?raw'
+import rain3Icon from '@/assets/icons/021-rain-3.svg?raw'
+import stormIcon from '@/assets/icons/021-storm.svg?raw'
+import snowingicon from '@/assets/icons/021-snowing.svg?raw'
+import snowing2Icon from '@/assets/icons/021-snowing-2.svg?raw'
+import mist from '@/assets/icons/021-mist.svg?raw'
+
 const ICON_MAPPING: Record<string, string> = {
-  '01d': '021-sun',
-  '01n': '021-night-2',
-  '02d': '021-cloudy-1',
-  '02n': '021-night',
-  '03d': '021-cloud',
-  '03n': '021-cloud',
-  '04d': '021-cloud',
-  '04n': '021-cloud',
-  '09d': '021-rain-2',
-  '09n': '021-rain-2',
-  '10d': '021-rain-1',
-  '10n': '021-rain-3',
-  '11d': '021-storm',
-  '11n': '021-storm',
-  '13d': '021-snowing',
-  '13n': '021-snowing-2',
-  '50d': '021-mist',
-  '50n': '021-mist',
+  '01d': sunIcon,
+  '01n': night2Icon,
+  '02d': cloudy1Icon,
+  '02n': nightIcon,
+  '03d': cloudIcon,
+  '03n': cloudIcon,
+  '04d': cloudIcon,
+  '04n': cloudIcon,
+  '09d': rain2Icon,
+  '09n': rain2Icon,
+  '10d': rain1Icon,
+  '10n': rain3Icon,
+  '11d': stormIcon,
+  '11n': stormIcon,
+  '13d': snowingicon,
+  '13n': snowing2Icon,
+  '50d': mist,
+  '50n': mist,
 }
 
 declare interface ErrorResponse {

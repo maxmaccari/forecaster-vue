@@ -9,7 +9,7 @@
       </div>
       <div class="mt-4 flex items-center text-primary text-sm leading-6 font-light">
         <div>
-          <VIcon :file="weather.icon" class="w-8" />
+          <span v-html="weather.icon" class="w-8" />
         </div>
         <div class="flex flex-col ml-2">
           <span class="capitalize">

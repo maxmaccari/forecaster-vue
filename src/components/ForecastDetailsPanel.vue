@@ -2,7 +2,7 @@
   <div class="w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
     <div class="flex flex-col sm:flex-row">
       <router-link :to="{ name: 'Forecast', params: { location } }" class="sm:mt-2">
-        <VIcon file="circle-left" class="w-8 fill-primary/75 stroke-primary/75 hover:fill-primary  hover:stroke-primary " />
+        <CircleLeftIcon class="w-8 fill-primary/75 stroke-primary/75 hover:fill-primary  hover:stroke-primary " />
       </router-link>
       
       <div class="flex flex-col flex-grow mt-4 sm:mt-0 sm:ml-2">
@@ -19,7 +19,7 @@
           <div class="mt-4 sm:mt-0 flex flex-col sm:flex-row">
             <div class="flex flex-col items-center border-t sm:border-t-0 sm:border-r border-gray border-dotted sm:border-solid pt-2 sm:pt-0 sm:pr-2 sm:mr-2">
               <div class="flex">
-                <VIcon file="wind" />
+                <WindIcon />
                 <div class="ml-2 font-bold">Wind Direction</div>
               </div>
 
@@ -33,7 +33,7 @@
 
             <div class="flex flex-col items-center border-t sm:border-t-0 sm:border-r border-gray border-dotted sm:border-solid mt-2 pt-2 sm:mt-0 sm:pt-0 sm:pr-2 sm:mr-2">
               <div class="flex">
-                <VIcon file="humidity" />
+                <HumidityIcon />
                 <div class="ml-2 font-bold">Humidity</div>
               </div>
 
@@ -42,7 +42,7 @@
 
             <div class="flex flex-col items-center border-t border-b sm:border-0 border-gray border-dotted my-2 py-2 sm:m-0 sm:p-0">
               <div class="flex">
-                <VIcon file="meter" />
+                <MeterIcon />
                 <div class="ml-2 font-bold">Pressure</div>
               </div>
               <div class="mt-2 text-primary/75 text-center">{{ weather.pressure }} bar</div>
@@ -75,10 +75,14 @@ import ForecastHeader from './ForecastHeader.vue'
 import ForecastDetailsPanelTimeWeather from './ForecastDetailsPanelTimeWeather.vue'
 import { Forecast } from '@/use/forecast'
 import { getDetailsNextHours, dateFormat, timeFormat, getDetailsWeather } from '@/utils/forecast'
+import CircleLeftIcon from '@/assets/icons/circle-left.svg?component'
+import WindIcon from '@/assets/icons/wind.svg?component'
+import HumidityIcon from '@/assets/icons/humidity.svg?component'
+import MeterIcon from '@/assets/icons/meter.svg?component'
 
 export default defineComponent({
   name: 'ForecastDetailsPanel',
-  components: { ForecastHeader, ForecastDetailsPanelTimeWeather },
+  components: { ForecastHeader, ForecastDetailsPanelTimeWeather, CircleLeftIcon, WindIcon, HumidityIcon, MeterIcon },
   props: {
     forecast: {
       type: Forecast,

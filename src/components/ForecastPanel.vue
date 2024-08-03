@@ -13,7 +13,7 @@
 
         <div class="mt-4 flex flex-wrap items-center">
           <router-link class="btn btn--sm w-full sm:w-fit" :to="{ name: 'Home' }">
-            <v-icon file="pencil-icon" class="inline-block w-4 fill-current" />
+            <PencilIcon class="inline-block w-4 fill-current" />
             <span>Change City</span>
           </router-link>
   
@@ -64,6 +64,7 @@ import ForecastPanelSummary from './ForecastPanelSummary.vue'
 import ForecastPanelWeekDay from './ForecastPanelWeekDay.vue'
 import { Forecast } from '@/use/forecast'
 import { getNextHours, getNextWeek, dateFormat } from '@/utils/forecast'
+import PencilIcon from '@/assets/icons/pencil.svg?component'
 
 export default defineComponent({
   name: 'ForecastPanel',
@@ -71,6 +72,7 @@ export default defineComponent({
     ForecastHeader,
     ForecastPanelSummary,
     ForecastPanelWeekDay,
+    PencilIcon
   },
   props: {
     forecast: {

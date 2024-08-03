@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <VIcon :file="detail.weather.icon" class="w-8" />
+    <span v-html="detail.weather.icon" class="w-8" />
     <div class="flex flex-col ml-3">
       <div>{{ formattedTime }}</div>
       <div class="flex">

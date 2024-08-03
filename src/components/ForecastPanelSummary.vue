@@ -1,6 +1,6 @@
 <template>
   <div class="flex ">
-    <div><v-icon :file="summary.icon" class="w-8" /></div>
+    <div><span v-html="summary.icon" class="w-8" /></div>
     <div class="ml-2">
       <div class="text-2xl leading-6 font-bold">
         {{ summary.temperature }}º
