@@ -82,7 +82,6 @@ const Component = defineComponent({
 
     const router = useRouter();
 
-
     const goToForecast = () => {
       router.push({
         name: 'Forecast',

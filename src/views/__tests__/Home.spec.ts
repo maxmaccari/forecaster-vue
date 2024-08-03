@@ -1,19 +1,22 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { shallowMount } from '@vue/test-utils'
+import { useRouter } from 'vue-router'
 import Home from '../Home.vue'
-import { clearCache } from '@/use/forecast'
+import { clearCache } from '../../use/forecast'
+import router from '../../router/index'
 
-vi.mock('@/use/forecast')
+vi.mock('vue-router')
+vi.mock('../../use/forecast')
 
-const router = {
-  push: vi.fn(),
+const mockedRouter = {
+  ...router,
+  push: vi.fn()
 }
 
 const createWrapper = (options = {}) => {
   return shallowMount(Home, {
     global: {
-      mocks: { $router: router },
       components: {
         RouterLink: {},
         AppLogo: {},
@@ -23,9 +26,13 @@ const createWrapper = (options = {}) => {
   })
 }
 
+
 describe('Home', () => {
+  vi.mocked(useRouter).mockReturnValue(mockedRouter)
+
   beforeEach(() => {
-    vi.resetAllMocks()
+    vi.mocked(mockedRouter.push).mockReset()
+    vi.mocked(clearCache).mockReset()
   })
 
   it('renders the view properly', () => {
@@ -60,14 +67,14 @@ describe('Home', () => {
     const locationForm = wrapper.find('[data-test-id="locationForm"]')
     await locationForm.trigger('submit')
 
-    expect(router.push).toBeCalledWith({
+    expect(mockedRouter.push).toBeCalledWith({
       name: 'Forecast',
       params: { location: 'new york' },
     })
   })
 
   it('clears the forecast cache when it is called', async () => {
-    const wrapper = createWrapper()
+    createWrapper()
 
     expect(clearCache).toBeCalledTimes(1)
   })
