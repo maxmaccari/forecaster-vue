@@ -1,11 +1,11 @@
 <template>
-  <div class="px-6 py-4 pt-2 text-primary min-w-64 max-w-md mx-8 sm:mx-0 bg-secondary/[0.8]">
-    <h2 class="flex items-center mt-4 text-lg font-light text-primary text-justify">
+  <VPanel class="max-w-md">
+    <template #title>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        class="w-8 text-red-800"
+        class="w-8 mr-2"
       >
         <path
           fill-rule="evenodd"
@@ -13,23 +13,25 @@
           clip-rule="evenodd"
         />
       </svg>
-      <span class="ml-1 text-lg leading-6 font-normal">
-        {{ title }}
-      </span>
-    </h2>
-    <p class="mt-2 text-base leading-6 font-light">{{ message }}</p>
-    <p class="mt-2 text-base leading-6 font-light" v-if="isTryAgain">
+
+      {{ title }}
+    </template>
+
+    <VParagraph class="mt-2 text-justify">{{ message }}</VParagraph>
+    <VParagraph class="mt-2 text-justify" v-if="isTryAgain">
       <a class="link" @click="$emit('try-again')">Click here</a> to try again.
-    </p>
-    <p class="mt-2 text-base leading-6 font-light" v-else>
+    </VParagraph>
+    <VParagraph class="mt-2 text-justify" v-else>
       <router-link :to="{ name: 'Home' }" class="link">Click here</router-link>
       to try again with another city.
-    </p>
-  </div>
+    </VParagraph>
+  </VPanel>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import VPanel from './VPanel.vue'
+import VParagraph from './VParagraph.vue';
 
 declare interface AppError {
   response: {
@@ -38,48 +40,46 @@ declare interface AppError {
   message: string
 }
 
-export default defineComponent({
-  name: 'ErrorPanel',
-  props: {
-    error: {
-      type: [Object, String],
-      required: true,
-    },
-  },
-  computed: {
-    title(): string {
-      if (typeof this.error === 'object') {
-        const error = this.error as AppError
-
-        if (error.response?.status === 404) {
-          return 'Not Found'
-        } else if (error?.message === 'Failed to fetch') {
-          return 'Network Error'
-        }
-      }
-
-      return 'Something gone wrong'
-    },
-    message(): string {
-      if (typeof this.error === 'string') {
-        return this.error
-      }
-
-      const error = this.error as AppError
-
-      if (error.response?.status === 404) {
-        return 'Sorry, the asked city was not found.'
-      } else if (error.message === 'Failed to fetch') {
-        return 'Sorry, we was not able to perform the request.'
-      }
-
-      return error.message
-    },
-    isTryAgain(): boolean {
-      const error = this.error as AppError
-
-      return !error.response || error.response.status !== 404
-    },
-  },
+const props = defineProps({
+  error: {
+    type: [Object, String],
+    required: true,
+  }
 })
+
+const title = computed(() => {
+  if (typeof props.error === 'object') {
+    const error = props.error as AppError
+
+    if (error.response?.status === 404) {
+      return 'Not Found'
+    } else if (error?.message === 'Failed to fetch') {
+      return 'Network Error'
+    }
+  }
+
+  return 'Something gone wrong'
+})
+
+const message = computed(() => {
+  if (typeof props.error === 'string') {
+      return props.error
+    }
+
+    const error = props.error as AppError
+
+    if (error.response?.status === 404) {
+      return 'Sorry, the asked city was not found.'
+    } else if (error.message === 'Failed to fetch') {
+      return 'Sorry, we was not able to perform the request.'
+    }
+
+    return error.message
+})
+
+const isTryAgain = computed(() => {
+  const error = props.error as AppError
+
+  return !error.response || error.response.status !== 404
+});
 </script>

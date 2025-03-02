@@ -11,25 +11,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, computed} from 'vue';
-import { ForecastDetails } from '@/use/forecast'
-import { timeFormat} from '@/utils/forecast'
+<script lang="ts" setup>
+  import { computed } from 'vue';
+  import { ForecastDetails } from '@/use/forecast'
+  import { timeFormat} from '@/utils/forecast'
 
-export default defineComponent({
-  name: 'ForecastDetailsPanelTimeWeather',
-  components: {  },
-  props: {
+  const props = defineProps({
     detail: {
       type: ForecastDetails,
       required: true
     },
-  },
-  setup(props) {
-    const formattedTime = computed(() => timeFormat.format(props.detail.timestamp * 1000));
+  })
 
-    return { formattedTime }
-  }
-})
-
+  const formattedTime = computed(() => timeFormat.format(props.detail.timestamp * 1000));
 </script>

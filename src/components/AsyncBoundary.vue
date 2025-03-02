@@ -10,28 +10,20 @@
   </Suspense>
 </template>
 
-<script>
-import { ref, onErrorCaptured } from 'vue'
-import ErrorPanel from './ErrorPanel.vue'
-import LoadingPanel from './LoadingPanel.vue'
+<script lang="ts" setup>
+  import { ref, onErrorCaptured, type Ref } from 'vue'
+  import ErrorPanel from './ErrorPanel.vue'
+  import LoadingPanel from './LoadingPanel.vue'
 
-export default {
-  name: 'AsyncBoundary',
-  components: { LoadingPanel, ErrorPanel },
-  setup() {
-    const error = ref(null)
+  const error: Ref<Error | null> = ref(null)
 
-    const tryAgain = () => {
-      error.value = null
-    }
+  const tryAgain = () => {
+    error.value = null
+  }
 
-    onErrorCaptured(err => {
-      error.value = err
+  onErrorCaptured(err => {
+    error.value = err
 
-      return true
-    })
-
-    return { error, tryAgain }
-  },
-}
+    return true
+  })
 </script>

@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 
 import { shallowMount } from '@vue/test-utils'
-import LoadingSpinner from '../LoadingSpinner.vue'
+import VLoadingSpinner from '../VLoadingSpinner.vue'
 
-describe('LoadingSpinner', () => {
+describe('VLoadingSpinner', () => {
   it('renders the component properly', () => {
-    const wrapper = shallowMount(LoadingSpinner)
+    const wrapper = shallowMount(VLoadingSpinner)
 
     expect(wrapper.html()).toMatchSnapshot()
   })

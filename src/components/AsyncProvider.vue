@@ -2,23 +2,16 @@
   <slot :data="data"></slot>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script lang="ts" setup>
+  import {  ref } from 'vue'
 
-export default defineComponent({
-  name: 'AsyncProvider',
-  props: {
+  const props = defineProps({
     provider: {
       type: Function,
       required: true,
-    },
-  },
-  async setup(props) {
-    const data = ref(null)
+    }
+  })
+  const data = ref(null)
 
-    data.value = await props.provider()
-
-    return { data }
-  },
-})
+  data.value = await props.provider()
 </script>

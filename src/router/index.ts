@@ -1,27 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import HomePage from '../views/HomePage.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: HomePage,
   },
   {
     path: '/credits',
     name: 'Credits',
-    component: () => import('@/views/Credits.vue'),
+    component: () => import('@/views/CreditsPage.vue'),
   },
   {
     path: '/forecast/:location',
     name: 'Forecast',
-    component: () => import(/* webpackPrefetch: true */ '@/views/Forecast.vue'),
+    component: () => import('@/views/ForecastPage.vue'),
     props: true,
   },
   {
     path: '/forecast/:location/:date',
     name: 'ForecastDetails',
-    component: () => import(/* webpackPrefetch: true */ '@/views/ForecastDetails.vue'),
+    component: () => import('@/views/ForecastDetailsPage.vue'),
     props: true,
   },
 ]

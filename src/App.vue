@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="background flex items-center justify-center h-full background">
     <router-view />
   </div>
 </template>

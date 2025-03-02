@@ -15,17 +15,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { NextHoursSummary } from '@/utils/forecast'
+<script lang="ts" setup>
+  import { NextHoursSummary } from '@/utils/forecast'
 
-export default defineComponent({
-  functional: true,
-  props: {
+  defineOptions({
+    functional: true,
+  })
+
+  defineProps({
     summary: {
-      type: NextHoursSummary,
-      required: true,
-    },
-  },
-})
+        type: NextHoursSummary,
+        required: true,
+      }
+  })
 </script>

@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
-    <div class="flex flex-col sm:flex-row">
+  <VPanel class="min-w-80 max-w-4xl sm:p-4 md:p-6 md:m-4 lg:m-0" bg-color="bg-secondary">
+    <VCol class="sm:flex-row">
       <router-link :to="{ name: 'Forecast', params: { location } }" class="sm:mt-2">
         <CircleLeftIcon class="w-8 fill-primary/75 stroke-primary/75 hover:fill-primary  hover:stroke-primary " />
       </router-link>
       
-      <div class="flex flex-col flex-grow mt-4 sm:mt-0 sm:ml-2">
+      <VCol class="flex-grow mt-4 sm:mt-0 sm:ml-2">
         <ForecastHeader
           :weather="weather"
           :date="formatedDate"
@@ -50,8 +50,8 @@
           </div>
         </div>
 
-      </div>
-    </div>
+      </VCol>
+    </VCol>
 
     <div class="my-4 sm:mt-8">
       <div class="text-lg leading-6 font-normal">Next Hours Forecast</div>
@@ -66,24 +66,24 @@
         />
       </div>
     </div>
-  </div>
+  </VPanel>
 </template>
 
-<script lang="ts">
-import {defineComponent, computed} from 'vue';
+<script lang="ts" setup>
 import ForecastHeader from './ForecastHeader.vue'
 import ForecastDetailsPanelTimeWeather from './ForecastDetailsPanelTimeWeather.vue'
-import { Forecast } from '@/use/forecast'
-import { getDetailsNextHours, dateFormat, timeFormat, getDetailsWeather } from '@/utils/forecast'
 import CircleLeftIcon from '@/assets/icons/circle-left.svg?component'
 import WindIcon from '@/assets/icons/wind.svg?component'
 import HumidityIcon from '@/assets/icons/humidity.svg?component'
 import MeterIcon from '@/assets/icons/meter.svg?component'
+import VPanel from './VPanel.vue'
+import VCol from './VCol.vue'
 
-export default defineComponent({
-  name: 'ForecastDetailsPanel',
-  components: { ForecastHeader, ForecastDetailsPanelTimeWeather, CircleLeftIcon, WindIcon, HumidityIcon, MeterIcon },
-  props: {
+import {computed} from 'vue';
+import { Forecast } from '@/use/forecast'
+import { getDetailsNextHours, dateFormat, getDetailsWeather } from '@/utils/forecast'
+
+  const props = defineProps({
     forecast: {
       type: Forecast,
       required: true
@@ -96,17 +96,13 @@ export default defineComponent({
       type: String,
       required: true
     }
-  },
-  setup(props) {
-    const date =  new Date(`${props.date}T00:00:00`);
-    const weather = getDetailsWeather(props.forecast, date);
-    const details = getDetailsNextHours(props.forecast, date);
+  })
 
-    const formatedDate = computed(() => 
-      dateFormat.format(date)
-    );
+  const date =  new Date(`${props.date}T00:00:00`);
+  const weather = getDetailsWeather(props.forecast, date);
+  const details = getDetailsNextHours(props.forecast, date);
 
-    return { formatedDate, weather, details, timeFormat }
-  }
-})
+  const formatedDate = computed(() => 
+    dateFormat.format(date)
+  );
 </script>

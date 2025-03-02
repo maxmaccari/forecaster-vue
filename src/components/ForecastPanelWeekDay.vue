@@ -17,21 +17,16 @@
   </router-link>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { WeatherSummary } from '@/utils/forecast'
-import CircleRight from '@/assets/icons/circle-right.svg?component'
+<script lang="ts" setup>
+  import { WeatherSummary } from '@/utils/forecast'
+  import CircleRight from '@/assets/icons/circle-right.svg?component'
 
-export default defineComponent({
-  functional: true,
-  components: {
-    CircleRight
-  },
-  props: {
+  defineOptions({ functional: true })
+
+  defineProps({
     weather: {
       type: WeatherSummary,
       required: true,
     },
-  },
-})
+  })
 </script>

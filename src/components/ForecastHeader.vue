@@ -36,13 +36,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, type PropType } from 'vue'
-import { type WeatherCommons } from '@/use/forecast';
+<script lang="ts" setup>
+  import { type PropType } from 'vue'
+  import { type WeatherCommons } from '@/use/forecast';
 
-export default defineComponent({
-  functional: true,
-  props: {
+  defineOptions({
+    functional: true,
+  })
+  defineProps({
     weather: {
       type: Object as PropType<WeatherCommons>,
       required: true,
@@ -51,6 +52,5 @@ export default defineComponent({
       type: String,
       required: true,
     },
-  },
-})
+  })
 </script>

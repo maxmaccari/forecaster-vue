@@ -71,3 +71,7 @@
     </rect>
   </svg>
 </template>
+
+<script lang="ts" setup>
+defineOptions({ functional: true })
+</script>

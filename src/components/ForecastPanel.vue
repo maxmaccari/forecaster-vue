@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full min-w-80 max-w-4xl p-2 text-primary bg-secondary sm:p-4 md:p-6 md:m-4 lg:m-0">
+  <VPanel class="min-w-80 max-w-4xl sm:p-4 md:p-6 md:m-4 lg:m-0" bg-color="bg-secondary">
     <ForecastHeader
       :weather="forecast.weather"
       :date="date"
@@ -54,46 +54,35 @@
         />
       </div>
     </div>
-  </div>
+  </VPanel>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
-import ForecastHeader from './ForecastHeader.vue'
-import ForecastPanelSummary from './ForecastPanelSummary.vue'
-import ForecastPanelWeekDay from './ForecastPanelWeekDay.vue'
-import { Forecast } from '@/use/forecast'
-import { getNextHours, getNextWeek, dateFormat } from '@/utils/forecast'
-import PencilIcon from '@/assets/icons/pencil.svg?component'
+<script lang="ts" setup>
+  import ForecastHeader from './ForecastHeader.vue'
+  import ForecastPanelSummary from './ForecastPanelSummary.vue'
+  import ForecastPanelWeekDay from './ForecastPanelWeekDay.vue'
+  import PencilIcon from '@/assets/icons/pencil.svg?component'
+  import { computed } from 'vue'
+  import { Forecast } from '@/use/forecast'
+  import { getNextHours, getNextWeek, dateFormat } from '@/utils/forecast'
+import VPanel from './VPanel.vue'
 
-export default defineComponent({
-  name: 'ForecastPanel',
-  components: {
-    ForecastHeader,
-    ForecastPanelSummary,
-    ForecastPanelWeekDay,
-    PencilIcon
-  },
-  props: {
+  const props = defineProps({
     forecast: {
-      type: Forecast,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
-  },
-  setup(props) {
-    const date = computed(() =>
-      dateFormat.format(new Date(props.forecast.timestamp * 1000))
-    )
+        type: Forecast,
+        required: true,
+      },
+      location: {
+        type: String,
+        required: true,
+      },
+  })
 
-    const nextHoursSummary = computed(() => getNextHours(props.forecast))
+  const date = computed(() =>
+    dateFormat.format(new Date(props.forecast.timestamp * 1000))
+  )
 
-    const nextWeek = computed(() => getNextWeek(props.forecast))
+  const nextHoursSummary = computed(() => getNextHours(props.forecast))
 
-    return { date, nextHoursSummary, nextWeek }
-  },
-})
+  const nextWeek = computed(() => getNextWeek(props.forecast))
 </script>
